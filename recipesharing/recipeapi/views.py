@@ -1,10 +1,22 @@
-from django.shortcuts import render, get_object_or_404
-from django.urls import reverse_lazy
-from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from .models import Recipe, Comment, Rating, Category, Ingredient
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.decorators import login_required
 
 
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from .models import User
+from .serializers import UserSerializer
+
+@api_view(['GET'])
+def ListUser(request):
+    users = User.objects.all()
+    serializer = UserSerializer(users, many=True)
+    return Response(serializer.data)
 
 
+@api_view(['POST'])
+def createUser(request):
+    serializer = UserSerializer(data = request.data )
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data)
+    else:
+        return Response(serializer.errors)
