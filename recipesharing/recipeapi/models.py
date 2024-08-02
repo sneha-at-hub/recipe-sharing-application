@@ -3,12 +3,12 @@ from django.core.exceptions import ValidationError
 from django.contrib.auth.models import AbstractUser
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-
 from django.db import models
-# Create your models here.
 
-#Authentication
 
+
+
+# Authentication and Profile Models
 class User(AbstractUser):
     username = models.CharField(max_length=100)
     email = models.EmailField(unique=True)
@@ -38,21 +38,15 @@ def create_user_profile(sender, instance, created, **kwargs):
 def save_user_profile(sender, instance, **kwargs):
     instance.profile.save()
 
-
-# Recipe
-
+# Recipe Models
 class Category(models.Model):
     name = models.CharField(max_length=100, unique=True)
+    
     def __str__(self):
         return self.name
 
-# class Ingredient(models.Model):
-#     name = models.CharField(max_length=100, unique=True)
-#     def __str__(self):
-#         return self.name
-
 class Recipe(models.Model):
-    user= models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=255)
     description = models.TextField()
     ingredient = models.TextField()
@@ -63,8 +57,7 @@ class Recipe(models.Model):
     
     def __str__(self):
         return self.title
-    
-    
+
 class Comment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, related_name='comments')
@@ -73,8 +66,7 @@ class Comment(models.Model):
 
     def __str__(self):
         return f"Comment by {self.user.username} on {self.recipe.title}"
-    
-    
+
 class Rating(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, related_name='ratings')
@@ -82,3 +74,36 @@ class Rating(models.Model):
 
     def __str__(self):
         return f"{self.rating} by {self.user.username} for {self.recipe.title}"
+
+# Shopping List Model
+class ShoppingList(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    name = models.CharField(max_length=255)
+    recipes = models.ManyToManyField(Recipe, related_name='shopping_lists')
+    items = models.JSONField(default=dict, blank=True)
+
+    def __str__(self):
+        return f"Shopping List: {self.name} by {self.user.username}"
+
+    def generate_items(self):
+        ingredients = {}
+        for recipe in self.recipes.all():
+            for line in recipe.ingredient.split('\n'):
+                if ':' in line:
+                    name, qty = line.split(':')
+                    name = name.strip()
+                    qty = int(qty.strip())
+                    if name in ingredients:
+                        ingredients[name] += qty
+                    else:
+                        ingredients[name] = qty
+        self.items = ingredients
+        self.save()
+
+    def add_recipe(self, recipe):
+        self.recipes.add(recipe)
+        self.generate_items()
+
+    def remove_recipe(self, recipe):
+        self.recipes.remove(recipe)
+        self.generate_items()
