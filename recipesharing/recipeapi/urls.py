@@ -5,6 +5,6 @@ from . import views
 # importing views from views..py
 
 urlpatterns = [
-    path('', views.ListUser, name = 'UserList'),
-    path('create/', views.createUser, name = 'createUser'),
+    path('users/', views.ListUser, name = 'UserList'),
+    path('users/create', views.createUser, name = 'createUser'),
 ]
