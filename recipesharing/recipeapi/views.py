@@ -2,8 +2,8 @@
 
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from .models import User
-from .serializers import UserSerializer, MyTokenPairSerializer, RegisterSerializer
+from .models import User, Recipe
+from .serializers import UserSerializer, MyTokenPairSerializer, RegisterSerializer, RecipeSerializer
 from rest_framework import status
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
@@ -56,3 +56,10 @@ class ProfileViewSet(viewsets.ModelViewSet):
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)  # Automatically associate the profile with the current user
+        
+
+@api_view(['GET'])
+def listRecipes(request):
+    data = Recipe.objects.all()
+    serializer = RecipeSerializer(data, many=True)
+    return Response(serializer.data)

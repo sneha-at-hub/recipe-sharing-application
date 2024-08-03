@@ -45,10 +45,19 @@ class RegisterSerializer(serializers.ModelSerializer):
         return user
 
 class RecipeSerializer(serializers.ModelSerializer):
+    username = serializers.SerializerMethodField()
+    category_name = serializers.SerializerMethodField()
+
     class Meta:
         model = Recipe
-        fields = '__all__'
+        fields = ['id', 'username', 'title', 'description', 'ingredient', 'created_at', 'updated_at', 'image', 'category_name']
 
+    def get_username(self, obj):
+        return obj.user.username
+
+    def get_category_name(self, obj):
+        return obj.category.name if obj.category else None
+    
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
