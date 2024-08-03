@@ -21,6 +21,7 @@ class MyTokenPairSerializer(TokenObtainPairSerializer):
         token['verified'] = user.profile.verified
         return token
 
+
 class RegisterSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True, validators=[validate_password])
     password2 = serializers.CharField(write_only=True)
@@ -66,4 +67,9 @@ class ShoppingListSerializer(serializers.ModelSerializer):
 class RatingSerializer(serializers.ModelSerializer):
     class Meta:
         model = Rating
+        fields = '__all__'
+
+class ProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Profile
         fields = '__all__'
