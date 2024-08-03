@@ -80,18 +80,16 @@ class ShoppingListSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class RatingSerializer(serializers.ModelSerializer):
-    username = serializers.SerializerMethodField()
-    recipe_title = serializers.SerializerMethodField()
-
     class Meta:
         model = Rating
-        fields = ['id', 'rating', 'username', 'recipe_title']
+        fields = '__all__'
 
-    def get_username(self, obj):
-        return obj.user.username if obj.user else None
-
-    def get_recipe_title(self, obj):
-        return obj.recipe.title if obj.recipe else None
+    def create(self, validated_data):
+        # If the user field is not required, remove the following line
+        # or set a default user if needed.
+        # validated_data['user'] = default_user_instance
+        return super().create(validated_data)
+    
     
 class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
