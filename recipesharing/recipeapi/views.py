@@ -2,8 +2,8 @@
 
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from .models import User, Recipe
-from .serializers import UserSerializer, MyTokenPairSerializer, RegisterSerializer, RecipeSerializer
+from .models import User, Recipe, Rating
+from .serializers import UserSerializer, MyTokenPairSerializer, RegisterSerializer, RecipeSerializer, RatingSerializer
 from rest_framework import status
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
@@ -63,3 +63,19 @@ def listRecipes(request):
     data = Recipe.objects.all()
     serializer = RecipeSerializer(data, many=True)
     return Response(serializer.data)
+
+@api_view(['GET'])
+def listRatings(request):
+    data = Rating.objects.all()
+    serializer = RatingSerializer(data, many=True)
+    return Response(serializer.data)
+
+
+@api_view(['POST'])
+def postRatings(request):
+    serializer = RatingSerializer(data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data)
+    else:
+        return Response(serializer.errors)

@@ -47,16 +47,22 @@ class RegisterSerializer(serializers.ModelSerializer):
 class RecipeSerializer(serializers.ModelSerializer):
     username = serializers.SerializerMethodField()
     category_name = serializers.SerializerMethodField()
+    ratings = serializers.SerializerMethodField()
 
     class Meta:
         model = Recipe
-        fields = ['id', 'username', 'title', 'description', 'ingredient', 'created_at', 'updated_at', 'image', 'category_name']
+        fields = ['id', 'username', 'title', 'description', 'ingredient', 'created_at', 'updated_at', 'image', 'category_name', 'ratings']
 
     def get_username(self, obj):
         return obj.user.username
 
     def get_category_name(self, obj):
         return obj.category.name if obj.category else None
+
+    def get_ratings(self, obj):
+        ratings = obj.ratings.all()
+        serializer = RatingSerializer(ratings, many=True)
+        return serializer.data
     
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
@@ -74,10 +80,19 @@ class ShoppingListSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class RatingSerializer(serializers.ModelSerializer):
+    username = serializers.SerializerMethodField()
+    recipe_title = serializers.SerializerMethodField()
+
     class Meta:
         model = Rating
-        fields = '__all__'
+        fields = ['id', 'rating', 'username', 'recipe_title']
 
+    def get_username(self, obj):
+        return obj.user.username if obj.user else None
+
+    def get_recipe_title(self, obj):
+        return obj.recipe.title if obj.recipe else None
+    
 class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = Profile

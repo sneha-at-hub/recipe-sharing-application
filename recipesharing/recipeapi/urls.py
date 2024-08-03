@@ -19,6 +19,11 @@ urlpatterns = [
     path('register/', views.RegisterView.as_view(), name='register'),
     
     path('recipe/', views.listRecipes, name = 'listRecipes'),
+
+    
+    path('ratings/', views.listRatings, name = 'listRatings'),
+    path('ratings/post/', views.postRatings, name = 'postRatings'),
+    
     
     path('', include(router.urls)),
 ]
