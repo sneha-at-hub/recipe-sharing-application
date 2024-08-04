@@ -6,7 +6,8 @@ from rest_framework_simplejwt.views import TokenRefreshView
  
 # importing views from views..py
 router = DefaultRouter()
-router.register(r'profiles', views.ProfileViewSet)
+router.register('profiles',views.ProfileViewSet, basename='profile')
+router.register('comments', views.CommentViewSet, basename='comment')
 
 urlpatterns = [
     path('users/', views.ListUser, name = 'UserList'),
@@ -19,6 +20,8 @@ urlpatterns = [
     path('register/', views.RegisterView.as_view(), name='register'),
     
     path('recipe/', views.listRecipes, name = 'listRecipes'),
+    
+    path('comments/get/', views.CommentListView.as_view(), name='comment-list'),
 
     
     path('ratings/', views.listRatings, name = 'listRatings'),

@@ -2,8 +2,8 @@
 
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from .models import User, Recipe, Rating
-from .serializers import UserSerializer, MyTokenPairSerializer, RegisterSerializer, RecipeSerializer, RatingSerializer
+from .models import User, Recipe, Rating, Comment, ShoppingList
+from .serializers import UserSerializer, MyTokenPairSerializer, RegisterSerializer, RecipeSerializer, RatingSerializer, CommentSerializer, ShoppingListSerializer
 from rest_framework import status
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
@@ -12,6 +12,7 @@ from rest_framework.permissions import IsAuthenticated, AllowAny
 from .models import Profile
 from .serializers import ProfileSerializer
 from rest_framework import generics
+from rest_framework import viewsets
 
 from rest_framework_simplejwt.views import TokenObtainPairView
 
@@ -78,3 +79,28 @@ def postRatings(request):
         serializer.save()
         return Response(serializer.data, status=201)
     return Response(serializer.errors, status=400)
+
+
+        
+class CommentViewSet(viewsets.ModelViewSet):
+    queryset = Comment.objects.all()
+    serializer_class = CommentSerializer
+    permission_classes = [IsAuthenticated]
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
+        
+class CommentListView(generics.ListAPIView):
+    queryset = Comment.objects.all()
+    serializer_class = CommentSerializer
+
+
+class ShoppingListViewSet(viewsets.ModelViewSet):
+    queryset = ShoppingList.objects.all()
+    serializer_class = ShoppingListSerializer
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
+
+    def perform_update(self, serializer):
+        serializer.save(user=self.request.user)

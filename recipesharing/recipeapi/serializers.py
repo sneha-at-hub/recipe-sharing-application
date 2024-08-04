@@ -45,24 +45,12 @@ class RegisterSerializer(serializers.ModelSerializer):
         return user
 
 class RecipeSerializer(serializers.ModelSerializer):
-    username = serializers.SerializerMethodField()
-    category_name = serializers.SerializerMethodField()
-    ratings = serializers.SerializerMethodField()
 
     class Meta:
         model = Recipe
-        fields = ['id', 'username', 'title', 'description', 'ingredient', 'created_at', 'updated_at', 'image', 'category_name', 'ratings']
+        fields = '__all__'
 
-    def get_username(self, obj):
-        return obj.user.username
 
-    def get_category_name(self, obj):
-        return obj.category.name if obj.category else None
-
-    def get_ratings(self, obj):
-        ratings = obj.ratings.all()
-        serializer = RatingSerializer(ratings, many=True)
-        return serializer.data
     
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
@@ -72,7 +60,13 @@ class CategorySerializer(serializers.ModelSerializer):
 class CommentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Comment
-        fields = '__all__'
+        fields = ['id', 'user', 'recipe', 'content', 'created_at']
+        read_only_fields = ['user', 'created_at']
+
+    def create(self, validated_data):
+        request = self.context.get('request')
+        validated_data['user'] = request.user
+        return super().create(validated_data)
 
 class ShoppingListSerializer(serializers.ModelSerializer):
     class Meta:
