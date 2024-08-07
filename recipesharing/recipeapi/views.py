@@ -4,7 +4,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .models import User, Recipe, Rating, Comment, ShoppingList, Category
 from .serializers import UserSerializer, MyTokenPairSerializer, RegisterSerializer, RecipeSerializer, RatingSerializer, CommentSerializer, ShoppingListSerializer, CategorySerializer
-from rest_framework import status, permissions
+from rest_framework import status, permissions, filters
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
 from rest_framework import viewsets
@@ -13,6 +13,7 @@ from .models import Profile
 from .serializers import ProfileSerializer
 from rest_framework import generics
 from rest_framework import viewsets
+from django_filters.rest_framework import DjangoFilterBackend
 
 from rest_framework_simplejwt.views import TokenObtainPairView
 
@@ -109,3 +110,11 @@ class ShoppingListViewSet(viewsets.ModelViewSet):
 
     def perform_update(self, serializer):
         serializer.save(user=self.request.user)
+        
+class RecipeViewSet(viewsets.ModelViewSet):
+    queryset = Recipe.objects.all()
+    serializer_class = RecipeSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    filter_backends = [DjangoFilterBackend, filters.SearchFilter]
+    filterset_fields = ['category']  # Add fields you want to filter on
+    search_fields = ['title', 'description', 'ingredient']  # Add fields you want to search

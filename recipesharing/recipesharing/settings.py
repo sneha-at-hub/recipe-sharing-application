@@ -41,8 +41,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'recipeapi',
+    'django_filters',
     'rest_framework',
     'rest_framework_simplejwt.token_blacklist',
+    
 ]
 
 MIDDLEWARE = [
@@ -175,9 +177,12 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication',
         # Other authentication classes as needed
     ),
+    'DEFAULT_FILTER_BACKENDS': [
+        'django_filters.rest_framework.DjangoFilterBackend',
+        'rest_framework.filters.SearchFilter',
+    ],
     # Other settings
 }
-
 
 AUTH_USER_MODEL = 'recipeapi.User'
 
