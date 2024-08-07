@@ -2,9 +2,9 @@
 
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from .models import User, Recipe, Rating, Comment, ShoppingList
-from .serializers import UserSerializer, MyTokenPairSerializer, RegisterSerializer, RecipeSerializer, RatingSerializer, CommentSerializer, ShoppingListSerializer
-from rest_framework import status
+from .models import User, Recipe, Rating, Comment, ShoppingList, Category
+from .serializers import UserSerializer, MyTokenPairSerializer, RegisterSerializer, RecipeSerializer, RatingSerializer, CommentSerializer, ShoppingListSerializer, CategorySerializer
+from rest_framework import status, permissions
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
 from rest_framework import viewsets
@@ -80,6 +80,11 @@ def postRatings(request):
         return Response(serializer.data, status=201)
     return Response(serializer.errors, status=400)
 
+
+class CategoryViewSet(viewsets.ModelViewSet):
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
         
 class CommentViewSet(viewsets.ModelViewSet):

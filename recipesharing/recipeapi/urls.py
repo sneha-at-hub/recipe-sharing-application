@@ -8,6 +8,7 @@ from rest_framework_simplejwt.views import TokenRefreshView
 router = DefaultRouter()
 router.register('profiles',views.ProfileViewSet, basename='profile')
 router.register('comments', views.CommentViewSet, basename='comment')
+router.register('categories', views.CategoryViewSet, basename='category')
 
 urlpatterns = [
     path('users/', views.ListUser, name = 'UserList'),
