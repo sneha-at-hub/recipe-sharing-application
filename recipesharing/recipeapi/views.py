@@ -1,40 +1,43 @@
-
-
-from rest_framework.decorators import api_view
-from rest_framework.response import Response
-from .models import User, Recipe, Rating, Comment, ShoppingList, Category
-from .serializers import UserSerializer, MyTokenPairSerializer, RegisterSerializer, RecipeSerializer, RatingSerializer, CommentSerializer, ShoppingListSerializer, CategorySerializer
-from rest_framework import status, permissions, filters
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
-from rest_framework import viewsets
-from rest_framework.permissions import IsAuthenticated, AllowAny
-from .models import Profile
-from .serializers import ProfileSerializer
-from rest_framework import generics
-from rest_framework import viewsets
 from django_filters.rest_framework import DjangoFilterBackend
-
+from rest_framework import status, permissions, filters, generics, viewsets
+from rest_framework.decorators import api_view
+from rest_framework.permissions import IsAuthenticated, AllowAny
+from rest_framework.response import Response
 from rest_framework_simplejwt.views import TokenObtainPairView
 
+from .models import User, Recipe, Rating, Comment, ShoppingList, Category, Profile
+from .serializers import (
+    UserSerializer,
+    MyTokenPairSerializer,
+    RegisterSerializer,
+    RecipeSerializer,
+    RatingSerializer,
+    CommentSerializer,
+    ShoppingListSerializer,
+    CategorySerializer,
+    ProfileSerializer
+)
 
+# JWT Token View
 class MyTokenObtainPairView(TokenObtainPairView):
     serializer_class = MyTokenPairSerializer
 
+# User Registration View
 class RegisterView(generics.CreateAPIView):
-    queryset = User.objects.all()  # Corrected typo in queryset definition
-    permission_classes = (AllowAny,)  # Corrected tuple syntax for permission_classes
+    queryset = User.objects.all()
+    permission_classes = (AllowAny,)
     serializer_class = RegisterSerializer
 
-
+# User List View
 @api_view(['GET'])
 def ListUser(request):
     users = User.objects.all()
     serializer = UserSerializer(users, many=True)
     return Response(serializer.data)
 
-
-    
+# User Edit View
 @api_view(['PATCH'])
 def editUser(request, pk):
     data = User.objects.get(pk=pk)
@@ -44,35 +47,38 @@ def editUser(request, pk):
         return Response(serializer.data)
     else:
         return Response(serializer.errors)
-    
+
+# User Delete View
 @api_view(['DELETE'])
 def deleteUser(request, pk):
     user = get_object_or_404(User, pk=pk)
     user.delete()
     return Response({"message": "user deleted"}, status=status.HTTP_202_ACCEPTED)
-    
+
+# Profile ViewSet
 class ProfileViewSet(viewsets.ModelViewSet):
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
-    permission_classes = [IsAuthenticated]  # Optional: Requires authentication to access these views
+    permission_classes = [IsAuthenticated]
 
     def perform_create(self, serializer):
-        serializer.save(user=self.request.user)  # Automatically associate the profile with the current user
-        
+        serializer.save(user=self.request.user)
 
+# Recipe List View
 @api_view(['GET'])
 def listRecipes(request):
     data = Recipe.objects.all()
     serializer = RecipeSerializer(data, many=True)
     return Response(serializer.data)
 
+# Rating List View
 @api_view(['GET'])
 def listRatings(request):
     data = Rating.objects.all()
     serializer = RatingSerializer(data, many=True)
     return Response(serializer.data)
 
-
+# Rating Post View
 @api_view(['POST'])
 def postRatings(request):
     serializer = RatingSerializer(data=request.data, context={'request': request})
@@ -81,13 +87,13 @@ def postRatings(request):
         return Response(serializer.data, status=201)
     return Response(serializer.errors, status=400)
 
-
+# Category ViewSet
 class CategoryViewSet(viewsets.ModelViewSet):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
-        
+# Comment ViewSet
 class CommentViewSet(viewsets.ModelViewSet):
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
@@ -95,12 +101,13 @@ class CommentViewSet(viewsets.ModelViewSet):
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
-        
+
+# Comment List View
 class CommentListView(generics.ListAPIView):
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
 
-
+# ShoppingList ViewSet
 class ShoppingListViewSet(viewsets.ModelViewSet):
     queryset = ShoppingList.objects.all()
     serializer_class = ShoppingListSerializer
@@ -110,11 +117,12 @@ class ShoppingListViewSet(viewsets.ModelViewSet):
 
     def perform_update(self, serializer):
         serializer.save(user=self.request.user)
-        
+
+# Recipe ViewSet
 class RecipeViewSet(viewsets.ModelViewSet):
     queryset = Recipe.objects.all()
     serializer_class = RecipeSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     filter_backends = [DjangoFilterBackend, filters.SearchFilter]
-    filterset_fields = ['category']  # Add fields you want to filter on
-    search_fields = ['title', 'description', 'ingredient']  # Add fields you want to search
+    filterset_fields = ['category']
+    search_fields = ['title', 'description', 'ingredient']
