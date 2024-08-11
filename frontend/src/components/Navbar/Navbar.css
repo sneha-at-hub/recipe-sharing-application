@@ -1,0 +1,117 @@
+.navbar .logo{
+    height: auto;
+    width: 100px;
+}
+
+.navbar{
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.navbar-menu{
+    display: flex;
+    list-style: none;
+    gap: 20px;
+    color: #49667e;
+    font-size: 18px ;
+
+}
+
+.navbar-right{
+    display: flex;
+    align-items:center ;
+    gap: 40px;
+}
+
+.navbar button{
+    background: transparent;
+    font-size: 16px;
+    color: #49667e;
+    border: 1px solid #49667e;
+    padding: 10px 30px;
+    border-radius: 50px;
+    cursor: pointer;
+
+}
+
+.first-nav .logo{
+    height: auto;
+    width: 100px;
+}
+
+.first-nav{
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.buttons{
+    display: flex;
+    gap: 20px;
+}
+
+.buttons .login-btn{
+    background-color: red;
+    font-size: 16px;
+    color: white;
+    border: 1px solid #ed0606;
+    padding: 10px 30px;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.buttons .signin-btn{
+    background: transparent;
+    font-size: 16px;
+    color: #ed0606;
+    border: 1px solid #ed0606;
+    padding: 10px 30px;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.buttons .signin-btn:hover{
+    background-color:red;
+    color: #f4f4f4;
+    border: 1px solid #ed0606;
+}
+.buttons .login-btn:hover{
+    background: transparent;
+    font-size: 16px;
+    color: #ed0606;
+    border: 1px solid #ed0606;
+    padding: 10px 30px;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+
+.searchbar input{
+    width:300px;
+    height: 50px;
+    border-radius: 12px 0 0 12px;
+    border: 1px solid #dce2e6;
+}
+.searchbar{
+    display: flex;
+}
+.searchbar .icon{
+    background-color: red;
+    padding: 10px 40px 4px 10px;
+    border-radius: 0 12px 12px 0;
+   
+    z-index: -10;
+
+    width: 45px;
+
+
+}
+.searchpng{
+    width: 30px;
+}
+
