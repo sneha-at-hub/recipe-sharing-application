@@ -42,7 +42,7 @@
     transition: all 0.2s ease-out; /* Smooth transition for all properties */
 }
 
-.navbar-menu li:hover::after {
+.navbar-menu .val:hover::after {
     opacity: 1; /* Make the underline visible on hover */
     width: 70%; 
 }
@@ -220,3 +220,24 @@
 }
 
 
+.values{
+    background:rgb(255, 255, 255);
+    position: absolute;
+    bottom:52%;
+    list-style: none;
+    width: 130px;
+   
+    border-radius: 4px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
+}
+
+.values .options{
+    padding: 10px 20px;
+    cursor: pointer;
+
+}
+
+.values .options:hover{
+    background-color: #edebeb;
+}

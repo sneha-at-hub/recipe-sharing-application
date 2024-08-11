@@ -63,10 +63,19 @@ const Navbar = () => {
     <div className='navbar'>
       <ul className="navbar-menu">
         
-        <li>Meals</li>
-        <li>Dinner</li>
-        <li>Cuisines</li>
-        <li>About Us</li>
+        <li className='val'>Meals</li>
+        {/* <div className="values">
+            <li className="options">Breakfast</li>
+            <li className="options">Breakfast</li>
+            <li className="options">Breakfast</li>
+            <li className="options">Breakfast</li>
+        </div>
+         */}
+     
+        <li className='val'>Dinner</li>
+        
+        <li className='val'>Cuisines</li>
+        <li className='val'>About Us</li>
       </ul>
 
       <div className="navbar-right">
