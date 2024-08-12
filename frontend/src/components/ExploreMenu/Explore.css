@@ -1,0 +1,36 @@
+.explore-menu {
+    display: flex;
+    width: 80%;
+    margin: auto;
+    gap: 20px;
+    margin-top: 50px;
+    flex-direction: column;
+}
+
+.explore-menu h1 {
+    color: #262626;
+    font-weight: 500;
+    text-align: center; /* Center the text horizontally */
+    margin: 0 auto; /* Center the element if it has a fixed width or if the container is wide enough */
+}
+
+
+.explore-menu-text {
+    color: #666; /* Optional: Add a style for the text */
+}
+
+.explore-menu-list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+    text-align: center;
+    margin: 20px 0;
+    overflow-x: scroll;
+}
+
+.explore-menu-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
