@@ -34,3 +34,7 @@
     flex-direction: column;
     align-items: center;
 }
+
+.explore-menu-list::-webkit-scrollbar{
+    display: none;
+}
