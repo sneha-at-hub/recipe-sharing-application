@@ -27,7 +27,6 @@
 .navbar-menu li {
     position: relative;
     padding-bottom: 5px; /* Adjust padding as needed */
-
 }
 
 .navbar-menu li::after {
@@ -37,16 +36,22 @@
     left: 0;
     width: 0;
     border-bottom: 4px solid red; /* Thicker border for better visibility */
-    border-radius:  12px; /* Add bottom-right and bottom-left radius */
+    border-radius: 12px; /* Add bottom-right and bottom-left radius */
     opacity: 0; /* Initially hidden */
     transition: all 0.2s ease-out; /* Smooth transition for all properties */
 }
 
-.navbar-menu .val:hover::after {
-    opacity: 1; /* Make the underline visible on hover */
-    width: 70%; 
+.navbar-menu .val:hover::after,
+.navbar-menu .val.active::after {
+    opacity: 1; /* Make the underline visible on hover and active */
+    width: 60%; /* Width of the underline for hover and active */
 }
 
+
+.navbar-menu li:hover,
+.navbar-menu li.active {
+    color: red; /* Change text color to red on hover and when active */
+}
 
 .navbar-right{
     display: flex;
@@ -102,6 +107,7 @@
     padding: 10px 30px;
     border-radius: 12px;
     cursor: pointer;
+    transition: 0.3s;
 }
 
 .buttons .signin-btn{
@@ -112,6 +118,7 @@
     padding: 10px 30px;
     border-radius: 12px;
     cursor: pointer;
+    transition: 0.3s;
 }
 
 .buttons .signin-btn:hover{
@@ -243,3 +250,4 @@
 .values .options:hover{
     background-color: #edebeb;
 }
+

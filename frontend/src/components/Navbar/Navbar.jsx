@@ -6,6 +6,12 @@ const Navbar = () => {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const [selectedCategory, setSelectedCategory] = useState('All Categories');
     const [hovered, setHovered] = useState(null);
+    const [activeItem, setActiveItem] = useState(null);
+
+    const handleClick = (item) => {
+      setActiveItem(item);
+    };
+
 
     const toggleDropdown = () => {
       setIsDropdownOpen(!isDropdownOpen);
@@ -61,22 +67,32 @@ const Navbar = () => {
 
     <div className="all-second">
     <div className='navbar'>
-      <ul className="navbar-menu">
-        
-        <li className='val'>Meals</li>
-        {/* <div className="values">
-            <li className="options">Breakfast</li>
-            <li className="options">Breakfast</li>
-            <li className="options">Breakfast</li>
-            <li className="options">Breakfast</li>
-        </div>
-         */}
-     
-        <li className='val'>Dinner</li>
-        
-        <li className='val'>Cuisines</li>
-        <li className='val'>About Us</li>
-      </ul>
+        <ul className="navbar-menu">
+          <li
+            className={`val ${activeItem === 'Meals' ? 'active' : ''}`}
+            onClick={() => handleClick('Meals')}
+          >
+            Meals
+          </li>
+          <li
+            className={`val ${activeItem === 'Dinner' ? 'active' : ''}`}
+            onClick={() => handleClick('Dinner')}
+          >
+            Dinner
+          </li>
+          <li
+            className={`val ${activeItem === 'Cuisines' ? 'active' : ''}`}
+            onClick={() => handleClick('Cuisines')}
+          >
+            Cuisines
+          </li>
+          <li
+            className={`val ${activeItem === 'About Us' ? 'active' : ''}`}
+            onClick={() => handleClick('About Us')}
+          >
+            About Us
+          </li>
+        </ul>
 
       <div className="navbar-right">
       <ul style={{ display: 'flex', alignItems: 'center', listStyle: 'none', padding: 0, margin: 0 }}>
@@ -85,23 +101,25 @@ const Navbar = () => {
             position: 'relative',
             padding: '0 20px',
             borderRight: '1px solid #ccc',
-            paddingBottom: '5px', // Adjust padding as needed
-            cursor: 'pointer'
+            paddingBottom: '5px',
+            cursor: 'pointer',
+            color: activeItem === 'Grocery List' || hovered === 'Grocery List' ? 'red' : '#49667e' // Red text color on hover and active
           }}
           onMouseEnter={() => setHovered('Grocery List')}
           onMouseLeave={() => setHovered(null)}
+          onClick={() => handleClick('Grocery List')}
         >
           Grocery List
           <div style={{
             position: 'absolute',
             bottom: 0,
             left: 20,
-            width: hovered === 'Grocery List' ? '40%' : '0%',
-            height: '4px', // Adjust height as needed
-            backgroundColor: 'red', // Adjust color as needed
-            borderRadius: '12px', // Add bottom-right and bottom-left radius
-            opacity: hovered === 'Grocery List' ? 1 : 0, // Make the underline visible on hover
-            transition: 'width 0.2s ease-out, opacity 0.2s ease-out' // Smooth transition
+            width: (activeItem === 'Grocery List' || hovered === 'Grocery List') ? '40%' : '0%',
+            height: '4px',
+            backgroundColor: 'red',
+            borderRadius: '12px',
+            opacity: (activeItem === 'Grocery List' || hovered === 'Grocery List') ? 1 : 0,
+            transition: 'width 0.2s ease-out, opacity 0.2s ease-out'
           }}></div>
         </li>
         <li
@@ -109,46 +127,50 @@ const Navbar = () => {
             position: 'relative',
             padding: '0 20px',
             borderRight: '1px solid #ccc',
-            paddingBottom: '5px', // Adjust padding as needed
-            cursor: 'pointer'
+            paddingBottom: '5px',
+            cursor: 'pointer',
+            color: activeItem === 'Add Recipe' || hovered === 'Add Recipe' ? 'red' : '#49667e' // Red text color on hover and active
           }}
           onMouseEnter={() => setHovered('Add Recipe')}
           onMouseLeave={() => setHovered(null)}
+          onClick={() => handleClick('Add Recipe')}
         >
           Add Recipe
           <div style={{
             position: 'absolute',
             bottom: 0,
             left: 20,
-            width: hovered === 'Add Recipe' ? '40%' : '0%',
-            height: '4px', // Adjust height as needed
-            backgroundColor: 'red', // Adjust color as needed
-            borderRadius: '12px', // Add bottom-right and bottom-left radius
-            opacity: hovered === 'Add Recipe' ? 1 : 0, // Make the underline visible on hover
-            transition: 'width 0.2s ease-out, opacity 0.2s ease-out' // Smooth transition
+            width: (activeItem === 'Add Recipe' || hovered === 'Add Recipe') ? '40%' : '0%',
+            height: '4px',
+            backgroundColor: 'red',
+            borderRadius: '12px',
+            opacity: (activeItem === 'Add Recipe' || hovered === 'Add Recipe') ? 1 : 0,
+            transition: 'width 0.2s ease-out, opacity 0.2s ease-out'
           }}></div>
         </li>
         <li
           style={{
             position: 'relative',
             padding: '0 20px',
-            paddingBottom: '5px', // Adjust padding as needed
-            cursor: 'pointer'
+            paddingBottom: '5px',
+            cursor: 'pointer',
+            color: activeItem === 'Recipe Box' || hovered === 'Recipe Box' ? 'red' : '#49667e' // Red text color on hover and active
           }}
           onMouseEnter={() => setHovered('Recipe Box')}
           onMouseLeave={() => setHovered(null)}
+          onClick={() => handleClick('Recipe Box')}
         >
           Recipe Box
           <div style={{
             position: 'absolute',
             bottom: 0,
             left: 20,
-            width: hovered === 'Recipe Box' ? '40%' : '0%',
-            height: '4px', // Adjust height as needed
-            backgroundColor: 'red', // Adjust color as needed
-            borderRadius: '12px', // Add bottom-right and bottom-left radius
-            opacity: hovered === 'Recipe Box' ? 1 : 0, // Make the underline visible on hover
-            transition: 'width 0.2s ease-out, opacity 0.2s ease-out' // Smooth transition
+            width: (activeItem === 'Recipe Box' || hovered === 'Recipe Box') ? '40%' : '0%',
+            height: '4px',
+            backgroundColor: 'red',
+            borderRadius: '12px',
+            opacity: (activeItem === 'Recipe Box' || hovered === 'Recipe Box') ? 1 : 0,
+            transition: 'width 0.2s ease-out, opacity 0.2s ease-out'
           }}></div>
         </li>
       </ul>
