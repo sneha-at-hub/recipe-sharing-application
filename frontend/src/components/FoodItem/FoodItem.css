@@ -30,6 +30,8 @@
 .food-item-name-rating p {
     font-size: 18px;
     font-weight: 500;
+
+
 }
 
 .food-item-desc{
@@ -59,7 +61,7 @@
 /* Optional: Style for the filled heart if different */
 .food-item-img-container .add.filled {
     color: white; /* Example style for filled heart */
- 
+
 }
 
 .one-div{

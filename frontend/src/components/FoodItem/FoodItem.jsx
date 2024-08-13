@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './FoodItem.css';
-import { CiHeart } from "react-icons/ci";
-import { FaHeart } from "react-icons/fa";
+import { VscHeartFilled } from "react-icons/vsc";
+import { VscHeart } from "react-icons/vsc";
 import { assets } from '../../assets/assets'; // Ensure the path and assets structure are correct
 
 const FoodItem = ({ id, name, ratings, description, image }) => {
@@ -18,9 +18,9 @@ const FoodItem = ({ id, name, ratings, description, image }) => {
       <div className="food-item-img-container">
         <img src={image} alt={name} className="food-item-image" />
         {isHeartFilled ? (
-          <FaHeart className='add' onClick={handleHeartClick} />
+          <VscHeartFilled className='add' onClick={handleHeartClick} />
         ) : (
-          <CiHeart className='add' onClick={handleHeartClick} />
+          <VscHeart className='add' onClick={handleHeartClick} />
         )}
       </div>
       <div className="food-item-info">
@@ -29,7 +29,7 @@ const FoodItem = ({ id, name, ratings, description, image }) => {
         </div>
         <p className="food-item-desc">{description}</p>
         <div className="one-div">
-          <img src={assets.rating_stars} alt="Rating stars" />
+          <img src={assets.rating_starts} alt="Rating stars" />
           <p className="food-item-ratings">{ratings} Ratings</p>
         </div>
       </div>
