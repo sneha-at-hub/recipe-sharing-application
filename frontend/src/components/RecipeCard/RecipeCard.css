@@ -1,18 +1,32 @@
-.food-display{
-    margin-top: 30px;
+.food-display {
     width: 80%;
-    margin: auto;
+    margin: 40px auto;
 }
 
-.food-display h2{
-    font-size: max(2vw, 24px);
-    font-weight: 600;
+.food-display h1 {
+    color: #262626;
+    font-weight: 500;
+    align-items: center;
+    font-size: 30px;
+    text-align: center;
+    margin: 20px 0;
+    
 }
 
-.food-display-list{
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    margin-top: 30px;
-    gap: 30px;
-    row-gap: 50px;
+.food-display-list {
+    display: flex;
+    overflow-x: scroll; /* Enables horizontal scroll */
+    gap: 40px;
+
+    padding: 20px 0; /* Adds some spacing around the items */
+    scroll-behavior: smooth; /* Smooth scrolling */
+}
+
+.food-display-list::-webkit-scrollbar {
+    display: none; /* Hides the scrollbar */
+}
+
+.food-display h1 .fa-arrow-right {
+    margin-left: 10px;
+    font-size: 28px;
 }

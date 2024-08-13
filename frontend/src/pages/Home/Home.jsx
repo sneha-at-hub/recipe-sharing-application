@@ -11,8 +11,8 @@ const Home = () => {
   return (
     <div>
 
-        <Explore/>
         <RecipeCard category={category} setCategory={setCategory}/>
+        <Explore/>
 
       
     </div>

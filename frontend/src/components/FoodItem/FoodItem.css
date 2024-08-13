@@ -1,20 +1,22 @@
 .food-item {
-    width: 100%;
-    margin: auto;
+    width: 400px; /* Set a fixed width for a larger card */
+    margin: 20px auto; /* Center the card and add some spacing */
     border-radius: 15px;
     box-shadow: 0px 0px 10px #00000015;
     transition: 0.3s;
     animation: fadeIn 1s;
+    padding: 0 0 20px;
+
 }
 
 .food-item-image{
-    width: 100%;
+    width: 220px;
     border-radius: 15px 15px 0px 0px;
 
 }
 
 .food-item-info{
-    padding: 20px;
+    padding: 10px;
 
 }
 
@@ -49,4 +51,18 @@
     border-radius: 50%;
 
 
+}
+.one-div{
+    display: flex;
+    margin-top: 20px;
+    justify-content: space-between;
+
+}
+
+.food-item-ratings{
+    font-size: 14px;
+}
+.one-div img{
+    width: 100px;
+    height: 20px;
 }

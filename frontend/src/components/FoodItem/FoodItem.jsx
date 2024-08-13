@@ -1,7 +1,7 @@
 import './FoodItem.css';
 import { assets } from '../../assets/assets'; // Ensure the path and assets structure are correct
 
-const FoodItem = ({ id, name, price, description, image }) => {
+const FoodItem = ({ id, name, ratings, description, image }) => {
   return (
     <div className="food-item">
       <div className="food-item-img-container">
@@ -11,10 +11,14 @@ const FoodItem = ({ id, name, price, description, image }) => {
       <div className="food-item-info">
         <div className="food-item-name-rating">
           <p>{name}</p>
-          <img src={assets.rating_starts} alt="Rating stars" />
         </div>
         <p className="food-item-desc">{description}</p>
-        <p className="food-item-price">${price}</p>
+        <div className="one-div">
+        <img src={assets.rating_starts} alt="Rating stars" />
+        <p className="food-item-ratings">{ratings} Ratings </p>
+        
+
+        </div>
       </div>
 
     </div>
