@@ -1,23 +1,39 @@
 .food-display {
     width: 80%;
-    margin: 40px auto;
+    margin: 30px 10px auto;
+    overflow: hidden; /* Ensure no overflow from the scrollable content */
 }
 
-.food-display h1 {
+.box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative; /* To position arrows correctly */
+}
+
+.box .side {
+    font-size: 40px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+    color: #888888;
+    background-color: rgba(255, 255, 255, 0.21);
+    border-radius: 50%;
+    cursor: pointer; /* Makes it clear the arrow is clickable */
+    z-index: 1; /* Ensures arrows are above other content */
+    padding: 10px; /* Adds some padding around the arrow */
+}
+
+h1 {
     color: #262626;
     font-weight: 500;
-    align-items: center;
     font-size: 30px;
     text-align: center;
-    margin: 20px 0;
-    
+    margin: 50px 0 0 0;
 }
 
 .food-display-list {
     display: flex;
     overflow-x: scroll; /* Enables horizontal scroll */
     gap: 40px;
-
     padding: 20px 0; /* Adds some spacing around the items */
     scroll-behavior: smooth; /* Smooth scrolling */
 }

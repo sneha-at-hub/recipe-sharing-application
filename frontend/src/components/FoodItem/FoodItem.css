@@ -61,7 +61,10 @@
 /* Optional: Style for the filled heart if different */
 .food-item-img-container .add.filled {
     color: white; /* Example style for filled heart */
+}
 
+.food-item-img-container .add:hover{
+    background-color: rgb(238, 24, 24);
 }
 
 .one-div{
