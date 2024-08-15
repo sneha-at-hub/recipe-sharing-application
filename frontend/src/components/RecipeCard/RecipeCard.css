@@ -30,6 +30,10 @@ h1 {
     margin: 50px 0 0 0;
 }
 
+h1:hover{
+    color: #ff0000;
+    
+}
 .food-display-list {
     display: flex;
     overflow-x: scroll; /* Enables horizontal scroll */

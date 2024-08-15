@@ -11,7 +11,7 @@
     color: #262626;
     font-weight: 500;
     text-align: center; /* Center the text horizontally */
-    margin: 0 auto; /* Center the element if it has a fixed width or if the container is wide enough */
+    margin: 0 0 10px 0; /* Center the element if it has a fixed width or if the container is wide enough */
 }
 
 
