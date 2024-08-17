@@ -1,9 +1,10 @@
 .header{
-    height: 50vw;
-    margin: 0 -30px;
+    height: 30vw;
+    margin: 0 -27px;
+  
 
     background: url('../../assets/header_img.png') no-repeat;
-    background-size: contain;
+    background-size:cover;
     position: relative;
 
 }
@@ -17,7 +18,7 @@ align-items: start;
 gap: 1.5vw;
 max-width: 50%;
 bottom: 30%;
-left:6vw;
+left:11vw;
 
 }
 
