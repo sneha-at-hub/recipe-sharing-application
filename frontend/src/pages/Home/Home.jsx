@@ -4,6 +4,7 @@ import Explore from '../../components/ExploreMenu/Explore';
 import RecipeCard from '../../components/RecipeCard/RecipeCard';
 import { useState } from 'react';
 import Popular from '../../components/Popular/Popular';
+import Header from '../../components/Header/Header';
 
 const Home = () => {
     const [category, setCategory] = useState("All");
@@ -13,6 +14,7 @@ const Home = () => {
             <RecipeCard category={category} setCategory={setCategory}/>
             <Explore/>
             <Popular />
+            <Header />
         </div>
     );
 };
