@@ -42,7 +42,8 @@ const RecipeCard = ({ category }) => {
                 key={index}
                 id={item._id}
                 name={item.name}
-                description={item.description}
+                description={item.subtitle}
+                time = {item.cooking_time}
                 ratings={item.ratings}
                 image={item.image}
               />

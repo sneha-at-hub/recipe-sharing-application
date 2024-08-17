@@ -13,15 +13,10 @@ const Home = () => {
     const [category, setCategory] = useState("All");
   return (
     <div>
-
         <RecipeCard category={category} setCategory={setCategory}/>
         <Explore/>
         <Popular />
-
-
-   
-
-      
+ 
     </div>
   )
 }

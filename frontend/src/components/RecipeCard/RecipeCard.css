@@ -37,7 +37,7 @@ h1:hover{
 .food-display-list {
     display: flex;
     overflow-x: scroll; /* Enables horizontal scroll */
-    gap: 40px;
+    gap: 70px;
     padding: 5px 0; /* Adds some spacing around the items */
     scroll-behavior: smooth; /* Smooth scrolling */
 }

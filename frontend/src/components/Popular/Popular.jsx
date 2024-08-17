@@ -20,8 +20,9 @@ const Popular = () => {
             id={food.id}
             name={food.name}
             ratings={food.ratings}
-            description={food.description}
+            description={food.subtitle}
             image={food.image}
+            
           />
         ))}
       </div>
