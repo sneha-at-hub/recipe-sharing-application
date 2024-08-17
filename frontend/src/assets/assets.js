@@ -42,8 +42,7 @@ import food_27 from './food_27.png'
 import food_28 from './food_28.png'
 import food_29 from './food_29.png'
 import food_30 from './food_30.png'
-import food_31 from './food_31.png'
-import food_32 from './food_32.png'
+
 
 import add_icon_white from './add_icon_white.png'
 import add_icon_green from './add_icon_green.png'
@@ -418,26 +417,6 @@ export const menu_list = [
             category: "Noodles",
             cooking_time: "15 mins",
             subtitle: "Vegetable noodles with a light seasoning."
-        },
-        {
-            _id: "31",
-            name: "Somen Noodles",
-            image: food_31,
-            ratings: 20,
-            description: "Food provides essential nutrients for overall health and well-being",
-            category: "Noodles",
-            cooking_time: "10 mins",
-            subtitle: "Light and delicate somen noodles."
-        },
-        {
-            _id: "32",
-            name: "Cooked Noodles",
-            image: food_32,
-            ratings: 15,
-            description: "Food provides essential nutrients for overall health and well-being",
-            category: "Noodles",
-            cooking_time: "25 mins",
-            subtitle: "Tender noodles cooked to perfection."
         }
     ];
     

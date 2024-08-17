@@ -1,0 +1,8 @@
+/* Home.css */
+
+.home-container {
+    background-color:#F5F5F5; /* Set background color to gray */
+    min-height: 100vh; /* Ensure it covers the full height of the viewport */
+    margin-top: 150px;
+    padding: 20px; /* Optional: Add padding to avoid content touching the edges */
+}

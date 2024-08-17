@@ -23,6 +23,7 @@ const Navbar = () => {
     }
   return (
     <>
+    <div className="final">
     <div className="all">
     <div className="first-nav">
 
@@ -103,7 +104,7 @@ const Navbar = () => {
             borderRight: '1px solid #ccc',
             paddingBottom: '5px',
             cursor: 'pointer',
-            color: activeItem === 'Grocery List' || hovered === 'Grocery List' ? 'red' : '#49667e' // Red text color on hover and active
+            color: activeItem === 'Grocery List' || hovered === 'Grocery List' ? 'red' : '#0e0e0e' // Red text color on hover and active
           }}
           onMouseEnter={() => setHovered('Grocery List')}
           onMouseLeave={() => setHovered(null)}
@@ -129,7 +130,7 @@ const Navbar = () => {
             borderRight: '1px solid #ccc',
             paddingBottom: '5px',
             cursor: 'pointer',
-            color: activeItem === 'Add Recipe' || hovered === 'Add Recipe' ? 'red' : '#49667e' // Red text color on hover and active
+            color: activeItem === 'Add Recipe' || hovered === 'Add Recipe' ? 'red' : '#0e0e0e' // Red text color on hover and active
           }}
           onMouseEnter={() => setHovered('Add Recipe')}
           onMouseLeave={() => setHovered(null)}
@@ -154,7 +155,7 @@ const Navbar = () => {
             padding: '0 20px',
             paddingBottom: '5px',
             cursor: 'pointer',
-            color: activeItem === 'Recipe Box' || hovered === 'Recipe Box' ? 'red' : '#49667e' // Red text color on hover and active
+            color: activeItem === 'Recipe Box' || hovered === 'Recipe Box' ? 'red' : '#0e0e0e' // Red text color on hover and active
           }}
           onMouseEnter={() => setHovered('Recipe Box')}
           onMouseLeave={() => setHovered(null)}
@@ -178,6 +179,9 @@ const Navbar = () => {
     </div>
 
     </div>
+
+    </div>
+
 
 
     </>

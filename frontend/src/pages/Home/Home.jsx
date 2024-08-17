@@ -1,24 +1,20 @@
+import './Home.css';
 
-import './Home.css'
-
-import Explore from '../../components/ExploreMenu/Explore'
-import RecipeCard from '../../components/RecipeCard/RecipeCard'
-import { useState } from 'react'
-import Popular from '../../components/Popular/Popular'
-
-
-
+import Explore from '../../components/ExploreMenu/Explore';
+import RecipeCard from '../../components/RecipeCard/RecipeCard';
+import { useState } from 'react';
+import Popular from '../../components/Popular/Popular';
 
 const Home = () => {
     const [category, setCategory] = useState("All");
-  return (
-    <div>
-        <RecipeCard category={category} setCategory={setCategory}/>
-        <Explore/>
-        <Popular />
- 
-    </div>
-  )
-}
 
-export default Home
+    return (
+        <div className="home-container">
+            <RecipeCard category={category} setCategory={setCategory}/>
+            <Explore/>
+            <Popular />
+        </div>
+    );
+};
+
+export default Home;
