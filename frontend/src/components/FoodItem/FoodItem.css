@@ -1,11 +1,13 @@
 .food-item {
-    width: 400px; /* Set a fixed width for a larger card */
+    width:400px; /* Set a fixed width for a larger card */
     margin: 20px auto; /* Center the card and add some spacing */
     border-radius: 15px;
     box-shadow: 0px 0px 10px #00000015;
     transition: 0.3s;
     animation: fadeIn 1s;
     padding: 0 0 20px;
+
+    
 
 }
 

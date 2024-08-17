@@ -27,7 +27,7 @@ h1 {
     font-weight: 500;
     font-size: 30px;
     text-align: center;
-    margin: 50px 0 0 0;
+    margin: 60px 0 0 0;
 }
 
 h1:hover{
@@ -38,7 +38,7 @@ h1:hover{
     display: flex;
     overflow-x: scroll; /* Enables horizontal scroll */
     gap: 40px;
-    padding: 20px 0; /* Adds some spacing around the items */
+    padding: 5px 0; /* Adds some spacing around the items */
     scroll-behavior: smooth; /* Smooth scrolling */
 }
 

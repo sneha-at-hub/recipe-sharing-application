@@ -2,13 +2,17 @@ import React, { useContext } from 'react';
 import './Popular.css';
 import FoodItem from '../FoodItem/FoodItem';
 import { StoreContext } from '../../context/StoreContext'; 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
 const Popular = () => {
   const { food_list } = useContext(StoreContext);
 
   return (
     <div className="popular-container">
-      <h2>Popular Foods</h2>
+      <h1 className='head'>
+      Popular Recipes <FontAwesomeIcon icon={faArrowRight} />
+      </h1>
       <div className="popular-grid">
         {food_list.map((food) => (
           <FoodItem
