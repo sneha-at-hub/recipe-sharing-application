@@ -1,0 +1,67 @@
+/* General styles for the container */
+.Login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #f0f0f0;
+  }
+  
+  /* Styles for the right container (login form) */
+  .right-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Styles for input fields */
+  .right-container input {
+    width: 100%;
+    height: 40px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 0 10px;
+    box-sizing: border-box;
+  }
+  
+  /* Styles for the login button */
+  .login-btn {
+    width: 100%;
+    height: 40px;
+    border: none;
+    background-color: #007bff; /* Blue color for a modern look */
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .login-btn:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+  }
+  
+  /* Styles for the signup link */
+  .right-container p {
+    font-size: 14px;
+    color: #666;
+  }
+  
+  .right-container a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .right-container a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Styles for the left container (optional) */
+  .left-container {
+    display: none; /* Hide if not used */
+  }
+  
