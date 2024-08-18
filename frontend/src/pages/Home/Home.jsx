@@ -15,6 +15,7 @@ const Home = () => {
             <RecipeCard category={category} setCategory={setCategory}/>
             <Explore/>
             <Popular />
+            <Header />
     
             
         </div>

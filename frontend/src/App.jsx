@@ -14,6 +14,7 @@ const App = () => {
     
     
     <div className='app'>
+      <Navbar />
 
       <Routes>
 

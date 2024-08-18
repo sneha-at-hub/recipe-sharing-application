@@ -1,13 +1,15 @@
-.header{
-    height: 30vw;
-    margin: 0 -27px;
-  
-
-    background: url('../../assets/header_img.png') no-repeat;
-    background-size:cover;
-    position: relative;
-
+.header {
+  height: 320px;
+  width: 100vw; /* Full viewport width */
+  background: url('../../assets/header_img1.png') no-repeat center center;
+  background-size: cover; /* Ensure the image covers the entire header area */
+  position: relative;
+  overflow: hidden; /* Hide any overflow */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for depth */
+  margin: 0 -20px ; /* Remove any margin */
 }
+
+/* Ensure no padding or margin around the body and html */
 
 .header-contents{
     position: absolute;
@@ -17,16 +19,20 @@
 align-items: start;
 gap: 1.5vw;
 max-width: 50%;
-bottom: 30%;
+bottom:60px;
 left:11vw;
 
 }
 
 .header-contents h2{
     font-weight: 600;
+
     color: white;
-    font-size: max(4.5vw, 22px);
+    font-size: max(4vw, 18px);
 }
+
+
+
 .header-contents p{
     color: white;
     font-size: 1.8vw;
