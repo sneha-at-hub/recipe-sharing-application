@@ -48,16 +48,23 @@ class Category(models.Model):
 class Recipe(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=255)
+    subtitle = models.CharField(max_length=255, null=True, blank=True)
     description = models.TextField()
     ingredient = models.TextField()
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, blank=True)
+    cooking_time = models.CharField(max_length=50, null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     image = models.ImageField(upload_to='recipes/', null=True, blank=True)
-    
+
+    def average_rating(self):
+        ratings = self.ratings.all()
+        if ratings.exists():
+            return sum(rating.rating for rating in ratings) / ratings.count()
+        return 0
+
     def __str__(self):
         return self.title
-
 class Comment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, related_name='comments')
