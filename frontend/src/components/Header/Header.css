@@ -1,12 +1,13 @@
 .header {
   height: 320px;
+
   width: 100vw; /* Full viewport width */
   background: url('../../assets/header_img1.png') no-repeat center center;
   background-size: cover; /* Ensure the image covers the entire header area */
   position: relative;
   overflow: hidden; /* Hide any overflow */
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for depth */
-  margin: 0 -20px ; /* Remove any margin */
+  margin: 20px -20px -30px -20px ; /* Remove any margin */
 }
 
 /* Ensure no padding or margin around the body and html */

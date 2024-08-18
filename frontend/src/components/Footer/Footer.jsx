@@ -30,6 +30,7 @@ const Footer = () => {
                     <li>About Us</li>
                     <li>Meals</li>
                     <li>Privacy Policy</li>
+                    
                 </ul>
             </div>
             <div className="footer-content-corner">
