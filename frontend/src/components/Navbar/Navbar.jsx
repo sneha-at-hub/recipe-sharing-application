@@ -61,6 +61,7 @@ const Navbar = () => {
       <button style={{ marginRight: '10px' }} className='login-btn'>Login</button>
       <span style={{ marginRight: '10px', fontSize:'24px', color:'#ccc' }}>|</span>
       <button className='signin-btn'>Signin</button>
+      <p></p>
     </div>
 </div>
 
