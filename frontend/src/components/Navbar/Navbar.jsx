@@ -1,12 +1,14 @@
 import './Navbar.css';
 import { assets } from '../../assets/assets';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const Navbar = () => {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const [selectedCategory, setSelectedCategory] = useState('All Categories');
     const [hovered, setHovered] = useState(null);
     const [activeItem, setActiveItem] = useState(null);
+
+
 
     const handleClick = (item) => {
       setActiveItem(item);

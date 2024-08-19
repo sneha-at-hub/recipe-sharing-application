@@ -24,6 +24,7 @@ const Login = () => {
     if (response.ok) {
       localStorage.setItem('access_token', data.access);
       localStorage.setItem('refresh_token', data.refresh);
+      localStorage.setItem('isLoggedIn', true); // Set login flag
       navigate('/');
     } else {
       setError('Invalid email or password');
