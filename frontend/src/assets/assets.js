@@ -420,3 +420,34 @@ export const menu_list = [
         }
     ];
     
+//     export let food_list = [];
+
+// async function fetchRecipes() {
+//     try {
+//         const response = await fetch('http://127.0.0.1:8000/recipes/');
+//         if (!response.ok) {
+//             throw new Error('Network response was not ok');
+//         }
+//         const data = await response.json();
+
+//         // Map the data to your frontend structure
+//         food_list = data.map(item => ({
+//             _id: item.id.toString(),
+//             name: item.name,
+//             image: item.image,  // Ensure this is a proper path or URL
+//             ratings: item.ratings,
+//             description: item.description,
+//             category: item.category,
+//             cooking_time: item.cooking_time,
+//             subtitle: item.subtitle
+//         }));
+
+//         console.log('Recipes fetched and stored:', food_list);
+
+//     } catch (error) {
+//         console.error('Fetching recipes failed:', error);
+//     }
+// }
+
+// // Call the function to fetch and store recipes
+// fetchRecipes();

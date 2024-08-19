@@ -1,7 +1,8 @@
 .food-display {
-    width: 80%;
+    width: 82%;
     margin: 30px 10px auto;
     overflow: hidden; /* Ensure no overflow from the scrollable content */
+    
 }
 
 .box {
@@ -9,6 +10,7 @@
     align-items: center;
     justify-content: center;
     position: relative; /* To position arrows correctly */
+ 
 }
 
 .box .side {

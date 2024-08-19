@@ -27,7 +27,7 @@ const Navbar = () => {
     <div className="all">
     <div className="first-nav">
 
-<img src={assets.logo} alt="Logo" className='logo' />
+<img src={assets.logo} alt="Logo" className='logo1' />
 
 <div className="searchbar">
     <div id="select" onClick={toggleDropdown}>

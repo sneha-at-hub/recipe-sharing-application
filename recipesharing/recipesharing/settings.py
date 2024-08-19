@@ -44,10 +44,12 @@ INSTALLED_APPS = [
     'django_filters',
     'rest_framework',
     'rest_framework_simplejwt.token_blacklist',
+    'corsheaders',
     
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -186,3 +188,7 @@ REST_FRAMEWORK = {
 
 AUTH_USER_MODEL = 'recipeapi.User'
 
+
+# settings.py
+
+CORS_ALLOW_ALL_ORIGINS = True

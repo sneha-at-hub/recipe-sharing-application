@@ -5,16 +5,20 @@ const Login = () => {
     <>
         <div className='Login'>
             <div className="right-container">
+                <h1>Login</h1>
                 <input type="text" placeholder='Email' />
                 <input type="text" placeholder='Password' />
 
-                <button className="login-btn">Login</button>
+                <button className="login-btn1">Login</button>
 
-                <p>Dont Have an account?<a href="Signup">Signup</a></p>
+                <p>Dont have an account? <a href="Signup">  Signup</a></p>
 
             </div>
 
             <div className="left-container">
+             <div className="contain">
+
+             </div>
 
             </div>
 
