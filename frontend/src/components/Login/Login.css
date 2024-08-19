@@ -80,8 +80,10 @@
     text-decoration: underline;
   }
   
-  /* Styles for the left container (optional) */
-  .left-container {
-    display: none; /* Hide if not used */
+  /* Styles for the left container (optional)
+  .contain {
+    background-color: #0056b3;
+    width: ;
+    
   }
-  
+   */
