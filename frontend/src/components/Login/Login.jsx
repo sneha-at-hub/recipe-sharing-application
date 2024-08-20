@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './Login.css';
-
+import { assets } from '../../assets/assets';
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -37,6 +37,11 @@ const Login = () => {
 
   return (
     <div className="Login">
+      <div className="main">
+      <div className="left-container">
+        <div className="contain"></div>
+        <img src={assets.image} alt="" style={{width:'400px'}}  />
+      </div>
       <div className="right-container">
         <h1>Login</h1>
         <form onSubmit={handleLogin}>
@@ -55,12 +60,11 @@ const Login = () => {
           <button type="submit" className="login-btn1">
             Login
           </button>
-          {error && <p className="error">{error}</p>}
+          {error && <p className="error" style={{color:'red'}}>{error}</p>}
         </form>
         <p>Don't have an account? <a href="/signup">Signup</a></p>
       </div>
-      <div className="left-container">
-        <div className="contain"></div>
+
       </div>
     </div>
   );
