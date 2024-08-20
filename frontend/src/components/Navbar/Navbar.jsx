@@ -4,10 +4,10 @@ import { useEffect, useState } from 'react';
 import * as jwt_decode from 'jwt-decode';
 import axios from 'axios';
 import { HiOutlineUserCircle } from "react-icons/hi2";
+import { useNavigate, useLocation } from 'react-router-dom'; // Import useLocation
 
 
 
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
 const Navbar = () => {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -16,6 +16,7 @@ const Navbar = () => {
     const [activeItem, setActiveItem] = useState(null);
     const [userName, setUserName] = useState(null);
     const navigate = useNavigate();
+    const location = useLocation();
 
     useEffect(() => {
       const fetchUserData = async () => {
@@ -92,7 +93,7 @@ const Navbar = () => {
 </div>
 
 <div className='buttons' style={{ display: 'flex', alignItems: 'center' }}>
-              {userName ? (
+              {userName && location.pathname !== '/login' ? (
                 <>
                 <HiOutlineUserCircle className='icon-profile' />
                   <p style={{ marginRight: '20px', fontSize: '20px', color: '#1E201E' }}>
