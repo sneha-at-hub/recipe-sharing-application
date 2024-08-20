@@ -16,6 +16,7 @@ urlpatterns = [
     path('users/', views.ListUser, name = 'UserList'),
     path('users/update/<int:pk>', views.editUser, name = 'editUser'),
     path('users/delete/<int:pk>', views.deleteUser, name = 'deleteUser'),
+    path('user-from-token/', views.UserDetailFromTokenView.as_view(), name='user-detail-from-token'),
     
     
     path('token/', views.MyTokenObtainPairView.as_view(), name='token_obtain_pair'),

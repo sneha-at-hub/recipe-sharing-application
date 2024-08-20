@@ -6,6 +6,9 @@ from rest_framework.decorators import api_view
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
 from rest_framework_simplejwt.views import TokenObtainPairView
+from rest_framework_simplejwt.authentication import JWTAuthentication
+from rest_framework_simplejwt.tokens import AccessToken
+from rest_framework.views import APIView
 
 from .models import User, Recipe, Rating, Comment, ShoppingList, Category, Profile
 from .serializers import (
@@ -23,6 +26,19 @@ from .serializers import (
 # JWT Token View
 class MyTokenObtainPairView(TokenObtainPairView):
     serializer_class = MyTokenPairSerializer
+
+class UserDetailFromTokenView(APIView):
+    authentication_classes = [JWTAuthentication]
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request, *args, **kwargs):
+        user = request.user
+        user_data = {
+            'id': user.id,
+            'username': user.username,
+            'email': user.email,
+        }
+        return Response(user_data, status=status.HTTP_200_OK)
 
 # User Registration View
 class RegisterView(generics.CreateAPIView):

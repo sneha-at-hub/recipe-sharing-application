@@ -1,13 +1,44 @@
 import './Navbar.css';
 import { assets } from '../../assets/assets';
 import { useEffect, useState } from 'react';
+import * as jwt_decode from 'jwt-decode';
+import axios from 'axios';
+import { HiOutlineUserCircle } from "react-icons/hi2";
+
+
+
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
 const Navbar = () => {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const [selectedCategory, setSelectedCategory] = useState('All Categories');
     const [hovered, setHovered] = useState(null);
     const [activeItem, setActiveItem] = useState(null);
+    const [userName, setUserName] = useState(null);
+    const navigate = useNavigate();
 
+    useEffect(() => {
+      const fetchUserData = async () => {
+          try {
+              const token = localStorage.getItem('access_token'); // or however you store the token
+              if (!token) {
+                  console.error('No token found');
+                  return;
+              }
+              const response = await axios.get('http://127.0.0.1:8000/api/user-from-token/', {
+                  headers: {
+                      Authorization: `Bearer ${token}`,
+                  },
+              });
+              console.log('User data fetched:', response.data); // Debugging line
+              setUserName(response.data.username);
+          } catch (error) {
+              console.error('Error fetching user data:', error);
+          }
+      };
+
+      fetchUserData();
+  }, []);
 
 
     const handleClick = (item) => {
@@ -46,6 +77,7 @@ const Navbar = () => {
             <li className="options" onClick={() => handleCategorySelect('Meal')}>Meal</li>
             <li className="options" onClick={()=> handleCategorySelect('Lunch')}>Lunch</li>
             <li className="options" onClick={()=> handleCategorySelect('Diet Meal')}>Diet Meal</li>
+            <li>Welcome, {userName}</li> {/* Display user name */}
         </ul>
     </div>
 
@@ -60,10 +92,25 @@ const Navbar = () => {
 </div>
 
 <div className='buttons' style={{ display: 'flex', alignItems: 'center' }}>
-      <button style={{ marginRight: '10px' }} className='login-btn'>Login</button>
-      <span style={{ marginRight: '10px', fontSize:'24px', color:'#ccc' }}>|</span>
-      <button className='signin-btn'>Signin</button>
-      <p></p>
+              {userName ? (
+                <>
+                <HiOutlineUserCircle className='icon-profile' />
+                  <p style={{ marginRight: '20px', fontSize: '20px', color: '#1E201E' }}>
+                   <span>Welcome</span> {userName}!
+                
+                  </p>
+        
+
+                </>
+              ) : (
+                <>
+                  <button style={{ marginRight: '10px' }} className="login-btn">
+                    Login 
+                  </button>
+                  <span style={{ marginRight: '10px', fontSize: '24px', color: '#3C3D37' }}>|</span>
+                  <button className="signin-btn">Signup</button>
+                </>
+              )}
     </div>
 </div>
 

@@ -7,6 +7,7 @@ import Popular from '../../components/Popular/Popular';
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
 
+
 const Home = () => {
     const [category, setCategory] = useState("All");
 
@@ -16,6 +17,8 @@ const Home = () => {
             <Explore/>
             <Popular />
             <Header />
+         
+            
     
             
         </div>
