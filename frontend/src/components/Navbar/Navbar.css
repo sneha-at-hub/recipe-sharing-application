@@ -266,3 +266,40 @@
     font-size: 32px;
     margin-right:10px ;
 }
+.val {
+    position: relative;
+  
+  }
+  
+  .dropdown {
+    position: absolute;
+    top: 100%;
+
+    background-color: white;
+    list-style: none;
+    
+
+    width: 160px;
+
+    display: block;
+    color: #797575;
+    z-index: 1000;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  }
+  
+  .dropdown li {
+    padding: 12px 20px;
+    cursor: pointer;
+    color: #797575;
+    font-size: 16px ;
+    
+ 
+  }
+
+  
+  .dropdown li:hover {
+    background-color: #f0f0f0;
+    padding: 12px 20px;
+    color: #797575;
+  }
+  

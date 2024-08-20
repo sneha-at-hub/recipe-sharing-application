@@ -11,12 +11,21 @@ import { useNavigate, useLocation } from 'react-router-dom'; // Import useLocati
 
 const Navbar = () => {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const [isDropdownOpen2, setIsDropdownOpen2] = useState(false);
     const [selectedCategory, setSelectedCategory] = useState('All Categories');
     const [hovered, setHovered] = useState(null);
     const [activeItem, setActiveItem] = useState(null);
     const [userName, setUserName] = useState(null);
     const navigate = useNavigate();
     const location = useLocation();
+
+    const handleMouseEnter = () => {
+      setIsDropdownOpen2(true);
+    };
+  
+    const handleMouseLeave = () => {
+      setIsDropdownOpen2(false);
+    };
 
     useEffect(() => {
       const fetchUserData = async () => {
@@ -78,7 +87,7 @@ const Navbar = () => {
             <li className="options" onClick={() => handleCategorySelect('Meal')}>Meal</li>
             <li className="options" onClick={()=> handleCategorySelect('Lunch')}>Lunch</li>
             <li className="options" onClick={()=> handleCategorySelect('Diet Meal')}>Diet Meal</li>
-            <li>Welcome, {userName}</li> {/* Display user name */}
+ 
         </ul>
     </div>
 
@@ -120,12 +129,30 @@ const Navbar = () => {
     <div className="all-second">
     <div className='navbar'>
         <ul className="navbar-menu">
-          <li
-            className={`val ${activeItem === 'Meals' ? 'active' : ''}`}
-            onClick={() => handleClick('Meals')}
+        <li
+            className={`val ${activeItem === 'Home' || location.pathname === '/'? 'active' : ''}`}
+            onClick={() => handleClick('Home')}
           >
-            Meals
+            Home
           </li>
+          <li
+        className={ `val ${activeItem === 'Meals' ? 'active' : ''}`}
+        onClick={() => handleClick('Meals')}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
+        Meals
+        {isDropdownOpen2 && (
+          <ul className="dropdown">
+            <li onClick={() => handleCategorySelect('All Categories')}>All Categories</li>
+            <li  onClick={() => handleCategorySelect('Dinner')}>Dinner</li>
+            <li  onClick={()=> handleCategorySelect('Breakfast')}>Breakfast</li>
+            <li onClick={() => handleCategorySelect('Meal')}>Meal</li>
+            <li onClick={()=> handleCategorySelect('Lunch')}>Lunch</li>
+            <li onClick={()=> handleCategorySelect('Diet Meal')}>Diet Meal</li>
+          </ul>
+        )}
+      </li>
           <li
             className={`val ${activeItem === 'Dinner' ? 'active' : ''}`}
             onClick={() => handleClick('Dinner')}
