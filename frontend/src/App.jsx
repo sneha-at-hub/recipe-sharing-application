@@ -15,7 +15,7 @@ const App = () => {
     
     
     <div className='app'>
-      <Navbar />
+      {/* <Navbar /> */}
 
       <Routes>
 
@@ -29,7 +29,7 @@ const App = () => {
       </Routes>
       
     </div>
-    <Footer />
+    {/* <Footer /> */}
     </>
   )
 }

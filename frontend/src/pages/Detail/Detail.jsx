@@ -3,7 +3,7 @@ import './Detail.css'
 const Detail = () => {
   return (
     <>
-    <div>
+    <div className='detailpage'>
         <h1>Veg Curry</h1>
 
         <div className="ratings-reviews-ima">
@@ -16,6 +16,7 @@ const Detail = () => {
         <div className="para">
             Buttermilk fried chicken that's incredibly tender
         </div>
+
       
     </div>
     </>

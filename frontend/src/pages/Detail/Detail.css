@@ -1,0 +1,16 @@
+.detailpage{
+    width: 82%;
+    margin: 0 auto;
+    
+}
+
+.ratings-reviews-ima{
+
+
+}
+.items-detail{
+    display: flex;
+    gap: 20px;
+    list-style: none;
+
+}
