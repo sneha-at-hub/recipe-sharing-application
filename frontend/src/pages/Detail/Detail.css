@@ -1,16 +1,105 @@
-.detailpage{
-    width: 82%;
+.recipe-card {
+    max-width: 800px;
     margin: 0 auto;
-    
+    padding: 20px;
+    font-family: Arial, sans-serif;
 }
 
-.ratings-reviews-ima{
-
-
+.breadcrumb {
+    font-size: 14px;
+    margin-bottom: 10px;
 }
-.items-detail{
+
+.breadcrumb a {
+    color: #555;
+    text-decoration: none;
+}
+
+.breadcrumb a:hover {
+    text-decoration: underline;
+}
+
+h1 {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.ratings {
     display: flex;
-    gap: 20px;
-    list-style: none;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.stars {
+    font-size: 18px;
+    color: #ffa500;
+}
+
+.rating-value {
+    margin-left: 5px;
+    font-size: 18px;
+}
+
+.reviews, .photos, .separator {
+    margin-left: 15px;
+    font-size: 14px;
+    color: #777;
+}
+
+.description {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.author {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 20px;
+}
+
+.buttons {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.btn {
+    padding: 8px 12px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+}
+
+.save {
+    background-color: #ff5757;
+    color: #fff;
+}
+
+.rate {
+    background-color: #ffb700;
+    color: #fff;
+}
+
+.print {
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+.share {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.image {
+    margin-top: 20px;
+}
+
+.image img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+.imgtag{
+    display: flex;
 
 }
