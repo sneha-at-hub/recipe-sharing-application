@@ -1,16 +1,23 @@
 import React from 'react';
 import './Detail.css'; // Import the CSS file for styling
 import { assets } from '../../assets/assets';
+import { IoIosArrowForward } from 'react-icons/io';
+
 
 function Detail() {
     return (
-        <div className="recipe-card">
-            <div className="breadcrumb">
-                <a href="#">Recipes</a> &gt; 
-                <a href="#"> Meat and Poultry</a> &gt; 
-                <a href="#"> Chicken</a> &gt; 
-                <a href="#"> Fried Chicken Recipes</a>
-            </div>
+        <div className="home-container">
+                    <div className="recipe-card">
+<div className="breadcrumb">
+    <a href="#">Recipes</a>
+    <IoIosArrowForward className='forward' />
+    <a href="#">Meat and Poultry</a>
+    <IoIosArrowForward className='forward'/>
+    <a href="#">Chicken</a>
+    <IoIosArrowForward className='forward' />
+    <a href="#">Fried Chicken Recipes</a>
+</div>
+
 
             <div className="seperating-detail">
             <div className="main-detail">
@@ -61,6 +68,9 @@ function Detail() {
             </div>
 
         </div>
+
+        </div>
+
     );
 }
 
