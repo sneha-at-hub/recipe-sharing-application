@@ -12,29 +12,42 @@ function Detail() {
                 <a href="#"> Fried Chicken Recipes</a>
             </div>
 
-            <h1>Chef John's Buttermilk Fried Chicken</h1>
-
+            <div className="seperating-detail">
+            <div className="main-detail">
+            <h2 className='detail-heading'>Chef John's Buttermilk Fried Chicken</h2>
             <div className="ratings">
+                <div className="box">
                 <span className="stars">⭐⭐⭐⭐</span>
                 <span className="rating-value">4.5</span>
-                <span className="reviews">(493)</span>
-                <span className="separator">|</span>
+                <span className="reviews-item">(493)</span>
+                </div>
+                <div className="box">
                 <span className="reviews">375 Reviews</span>
-                <span className="separator">|</span>
+                </div>
+
+                <div className="box">
                 <span className="photos">84 Photos</span>
+
+                </div>
             </div>
             <div className="imgtag">
-            <p className="description">
-                Buttermilk fried chicken that's incredibly tender, thanks to tangy buttermilk.
-                After the buttermilk soak, dredge the chicken pieces in seasoned flour and fry 
-                them in hot oil until crisp and golden.
-            </p>
+                
+                <p className="description">
+                    Buttermilk fried chicken that's incredibly tender, thanks to tangy buttermilk.
+                    After the buttermilk soak, dredge the chicken pieces in seasoned flour and fry 
+                    them in hot oil until crisp and golden.
+                </p>
+            </div>
+
+            </div>
             <div className="image">
                 <img src={assets.food_1} alt="Fried Chicken" />
             </div>
 
-
             </div>
+
+
+
             <div className="author">
                 <span>By <strong>Sneha Tamang</strong></span>
                 <span>Updated on July 1, 2024</span>
