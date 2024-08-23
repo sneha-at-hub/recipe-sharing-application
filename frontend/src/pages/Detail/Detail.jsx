@@ -23,16 +23,16 @@ function Detail() {
             <div className="main-detail">
             <h2 className='detail-heading'>Chef John's Buttermilk Fried Chicken</h2>
             <div className="ratings">
-                <div className="box">
+                <div className="box-1">
                 <span className="stars">⭐⭐⭐⭐</span>
                 <span className="rating-value">4.5</span>
                 <span className="reviews-item">(493)</span>
                 </div>
-                <div className="box">
+                <div className="box-1">
                 <span className="reviews">375 Reviews</span>
                 </div>
 
-                <div className="box">
+                <div className="box-1">
                 <span className="photos">84 Photos</span>
 
                 </div>
@@ -56,7 +56,7 @@ function Detail() {
 
 
             <div className="author">
-                <span>By <strong>Sneha Tamang</strong></span>
+                <span>By <strong>Sneha Tamang    </strong></span>
                 <span>Updated on July 1, 2024</span>
             </div>
 
