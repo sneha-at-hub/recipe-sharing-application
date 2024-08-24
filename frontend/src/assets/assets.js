@@ -60,6 +60,12 @@ import profile_icon from './profile_icon.png'
 import bag_icon from './bag_icon.png'
 import logout_icon from './logout_icon.png'
 import parcel_icon from './parcel_icon.png'
+import facebook from './facebook.png'
+import instagram from './instagram.png'
+import x from './x.png'
+import email from './email.png'
+import whatsapp from './whatsapp.png'
+import pinterest from './pin.png'
 
 export const assets = {
     logo,
@@ -84,6 +90,13 @@ export const assets = {
     parcel_icon,
     image,
     food_1,
+    facebook,
+    instagram,
+    x,
+    email,
+    whatsapp,
+    pinterest,
+    
 }
 
 export const menu_list = [

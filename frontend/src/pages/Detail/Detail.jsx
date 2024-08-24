@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Detail.css'; // Import the CSS file for styling
 import { assets } from '../../assets/assets';
 import { IoIosArrowForward } from 'react-icons/io';
@@ -6,12 +6,23 @@ import { FaRegHeart } from "react-icons/fa6";
 import { FaStar } from "react-icons/fa";
 import { IoPrint } from "react-icons/io5";
 import { FaShareFromSquare } from "react-icons/fa6";
+import Share from '../../components/Share/Share';
 
 
 
 
 
 function Detail() {
+    
+    const [showShare, setShowShare] = useState(false);
+
+    const handleShareClick = () => {
+      setShowShare(true);  // Show the share pop-up
+    };
+  
+    const handleCloseShare = () => {
+      setShowShare(false);  // Hide the share pop-up
+    };
     return (
         <div className="home-container">
             <div className="recipe-card">
@@ -74,11 +85,14 @@ function Detail() {
                 </div>
 
                 <div className="buttons">
-                    <button className="btns save">Save <FaRegHeart style={{ fontSize:'18px'}}/></button>
-                    <button className="btns rate">Rate <FaStar style={{color:'red', fontSize:'20px'}} /></button>
-                    <button className="btns print">Print <IoPrint style={{color:'red', fontSize:'20px'}} /></button>
-                    <button className="btns share">Share <FaShareFromSquare style={{color:'red', fontSize:'20px'}}  /></button>
-                </div>
+      <button className="btns save">Save <FaRegHeart style={{ fontSize: '18px' }} /></button>
+      <button className="btns rate">Rate <FaStar style={{ color: 'red', fontSize: '20px' }} /></button>
+      <button className="btns print">Print <IoPrint style={{ color: 'red', fontSize: '20px' }} /></button>
+      <button className="btns share" onClick={handleShareClick}>Share <FaShareFromSquare style={{ color: 'red', fontSize: '20px' }} /></button>
+      
+      {/* Share pop-up component */}
+      <Share show={showShare} onClose={handleCloseShare} />
+    </div>
 
         </div>
 
