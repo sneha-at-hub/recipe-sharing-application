@@ -33,7 +33,7 @@
     position: absolute;
     background-color: white;
     border: 1px solid #ccc; /* Add a border to match the select */
-    width: 100%; /* Match width of the select */
+    width: 42%; /* Match width of the select */
     top: 45px; /* Place it just below the select */
     max-height: 0; /* Initial max-height for transition */
     overflow-y: auto;

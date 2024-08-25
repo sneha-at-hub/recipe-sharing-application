@@ -111,7 +111,7 @@ const Description = () => {
       </div>
       <div className="image-upload-container">
         <label htmlFor="image-upload" className="image-upload-label">
-          <FaImages />
+          <FaImages style={{fontSize:'24px', marginRight:'20px'}} />  Add Image
           <input
             type="file"
             id="image-upload"

@@ -41,7 +41,7 @@
     overflow-wrap: break-word;
     position: relative; /* Ensure positioning context for absolute elements */
   }
-  
+
   .description-area img {
     max-width: 100%;
     height: auto;
@@ -67,3 +67,7 @@
   }
   
   
+  .description-area:focus {
+    border-color: #007bff; /* Border color when active */
+    outline: none; /* Remove default outline */
+  }
