@@ -52,6 +52,11 @@ class Recipe(models.Model):
     description = models.TextField()
     ingredient = models.TextField()
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, blank=True)
+    prep_time = models.CharField(max_length=50, null=True, blank=True)  # New field for preparation time
+    additional_time = models.CharField(max_length=50, null=True, blank=True)  # New field for additional time
+    total_time = models.CharField(max_length=50, null=True, blank=True)  # New field for total time
+    servings = models.CharField(max_length=50, null=True, blank=True)  # New field for servings
+    yield_amount = models.CharField(max_length=50, null=True, blank=True)  # New field for yield
     cooking_time = models.CharField(max_length=50, null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -62,6 +67,9 @@ class Recipe(models.Model):
         if ratings.exists():
             return sum(rating.rating for rating in ratings) / ratings.count()
         return 0
+
+    def __str__(self):
+        return self.title
 
     def __str__(self):
         return self.title
