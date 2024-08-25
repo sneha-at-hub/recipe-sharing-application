@@ -1,0 +1,6 @@
+.overlall-container{
+    background-color:#F5F5F5; /* Set background color to gray */
+    min-height: 100vh; /* Ensure it covers the full height of the viewport */
+    margin-top: 150px;
+
+}

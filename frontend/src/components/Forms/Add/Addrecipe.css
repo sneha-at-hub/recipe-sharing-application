@@ -1,0 +1,104 @@
+/* General Styles */
+.addrecipe-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+
+  }
+  
+  .form-container {
+    background-color: #fdfdfd;
+    border-radius: 10px;
+    margin-bottom: 60px;
+    padding: 30px;
+    margin-top: 70px;
+
+
+  }
+  
+  .h1-addrecipe{
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .form-group {
+    margin-bottom: 25px;
+    flex: 1;
+    min-width: 200px; /* Ensures the form groups don't shrink too much */
+  }
+  
+  .form-label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-size: 1rem;
+    color: #333;
+  }
+  
+  .form-input,
+  .form-textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    transition: border-color 0.3s;
+  }
+  
+  .form-input:focus,
+  .form-textarea:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+  
+  .form-input {
+    height: 45px;
+  }
+  
+  .form-textarea {
+    height: 120px;
+    resize: vertical;
+  }
+  
+  .form-input[type="file"] {
+    padding: 3px;
+    border: none;
+  }
+  
+  .flex-group {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  
+  @media (max-width: 768px) {
+    .flex-group {
+      flex-direction: column;
+    }
+  }
+  
+  /* Button Styles */
+  .add-recipe-button {
+    display: block;
+    width: 100%;
+    padding: 14px;
+    background-color: #ff0000;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 25px;
+  }
+  
+  .add-recipe-button:hover {
+    background-color: #eb1414;
+  }
+  
+  .add-recipe-button:active {
+    background-color: #ff0505;
+   
+  }
+  

@@ -1,0 +1,40 @@
+.text-editor {
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 4px;
+    width: 100%;
+    max-width: 800px;
+    margin: auto;
+  }
+  
+  .editor-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .font-size {
+    display: flex;
+    align-items: center;
+  }
+  
+  .font-size label {
+    margin-right: 5px;
+  }
+  
+  .font-size select {
+    padding: 5px;
+  }
+  
+  .editor-textarea {
+    width: 100%;
+    min-height: 300px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 4px;
+    font-family: Arial, sans-serif;
+    box-sizing: border-box;
+    overflow-y: auto;
+  }
+  

@@ -1,43 +1,58 @@
 .custom-dropdown-container {
     position: relative;
+    width: 100%; /* Make the container full width */
+   
+    margin: 0 auto; /* Center align if needed */
   }
   
   .custom-dropdown-select {
     display: flex;
     align-items: center;
+    justify-content: space-between; /* Distribute space between elements */
     cursor: pointer;
-    border: 1px solid black;
-    width: 30%;
-    height: 30px;
-    padding: 10px;
+    border: 1px solid #ccc; /* Lighter border color */
+    width: 100%; /* Take full width of the container */
+    height: 43px; /* Adjust height for better usability */
+    padding: 0 12px; /* Padding on the sides */
     border-radius: 8px;
+    background-color: white; /* Ensure the background is white */
+    transition: border-color 0.3s ease-in-out; /* Smooth transition */
+  }
+  
+  .custom-dropdown-select:hover {
+    border-color: #007bff; /* Change border color on hover */
   }
   
   .custom-dropdown-selected {
     margin: 0;
-    margin-right: 10px;
+    flex-grow: 1; /* Allow text to take up available space */
+    color: #515050; /* Slightly darker color for better readability */
   }
   
   .custom-dropdown-menu {
     position: absolute;
     background-color: white;
-    border: none;
-    width: 20%;
-    top: 30px;
-    max-height: 300px;
+    border: 1px solid #ccc; /* Add a border to match the select */
+    width: 100%; /* Match width of the select */
+    top: 45px; /* Place it just below the select */
+    max-height: 0; /* Initial max-height for transition */
     overflow-y: auto;
-    transition: max-height 0.3s ease-in-out;
+    transition: max-height 0.3s ease-in-out; /* Smooth transition */
     list-style: none;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    box-shadow: rgba(50, 50, 93, 0.1) 0px 2px 5px -1px, rgba(0, 0, 0, 0.1) 0px 1px 3px -1px;
     padding: 0;
-   
     margin: 0;
     z-index: 1000;
+  }
+  
+  .custom-dropdown-menu.open {
+    max-height: 300px; /* Max height when dropdown is open */
   }
   
   .custom-dropdown-option {
     padding: 10px;
     cursor: pointer;
+    transition: background-color 0.2s ease-in-out; /* Smooth transition */
   }
   
   .custom-dropdown-option:hover {
