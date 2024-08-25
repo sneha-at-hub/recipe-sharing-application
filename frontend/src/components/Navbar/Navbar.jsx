@@ -19,12 +19,23 @@ const Navbar = () => {
     const navigate = useNavigate();
     const location = useLocation();
 
+    useEffect(() => {
+      if (location.pathname === '/recipeadd') {
+        setActiveItem('Add Recipe');
+      } else {
+        setActiveItem(null);
+      }
+    }, [location.pathname]); 
+
     const handleMouseEnter = () => {
       setIsDropdownOpen2(true);
     };
   
     const handleMouseLeave = () => {
       setIsDropdownOpen2(false);
+    };
+    const handleLoginClick = () => {
+      navigate('/login'); // Navigate to /login
     };
 
     useEffect(() => {
@@ -53,6 +64,13 @@ const Navbar = () => {
 
     const handleClick = (item) => {
       setActiveItem(item);
+      if (item === 'Add Recipe') {
+        navigate('/recipeadd'); // Navigate to /recipeadd
+      }
+      else if (item === 'Home'){
+        navigate('/');
+      }
+    
     };
 
 
@@ -114,7 +132,7 @@ const Navbar = () => {
                 </>
               ) : (
                 <>
-                  <button style={{ marginRight: '10px' }} className="login-btn">
+                  <button style={{ marginRight: '10px' }} className="login-btn" onClick={handleLoginClick}>
                     Login 
                   </button>
                   <span style={{ marginRight: '10px', fontSize: '24px', color: '#3C3D37' }}>|</span>
@@ -213,6 +231,7 @@ const Navbar = () => {
           onMouseEnter={() => setHovered('Add Recipe')}
           onMouseLeave={() => setHovered(null)}
           onClick={() => handleClick('Add Recipe')}
+          
         >
           Add Recipe
           <div style={{
