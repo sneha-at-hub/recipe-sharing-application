@@ -1,6 +1,5 @@
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { IoCopyOutline } from 'react-icons/io5';
-import { FaTimes } from 'react-icons/fa';
 import { RxCross1 } from "react-icons/rx";
 import { HiOutlineChevronRight } from "react-icons/hi2";
 import { HiOutlineChevronLeft } from "react-icons/hi2";

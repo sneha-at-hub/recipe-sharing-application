@@ -7,6 +7,7 @@ import Popular from './components/Popular/Popular'
 import Footer from './components/Footer/Footer'
 import Login from './components/Login/Login'
 import Detail from './pages/Detail/Detail'
+import Addrecipe from './components/Forms/Add/Addrecipe'
 
 
 const App = () => {
@@ -15,7 +16,7 @@ const App = () => {
     
     
     <div className='app'>
-      <Navbar />
+      {/* <Navbar /> */}
 
       <Routes>
 
@@ -24,12 +25,14 @@ const App = () => {
       < Route path='/popular' element={<Popular/>} />
       < Route path='/login' element={<Login/>} />
       < Route path='/detail' element={<Detail/>} />
+      < Route path='/recipeadd' element={<Addrecipe/>} />
+
  
 
       </Routes>
       
     </div>
-    <Footer />
+    {/* <Footer /> */}
     </>
   )
 }
