@@ -1,305 +1,278 @@
-.navbar .logo{
-    height: auto;
-    width: 120px;
-    
+.navbar .logo {
+  height: auto;
+  width: 120px;
 }
 
-.final{
-    position: fixed; /* Fix the position */
-    top: 0; /* Align it to the top */
-    left: 0; /* Align it to the left */
-    width: 100%; /* Full width */
-    z-index: 1000; /* Ensure it stays above other content */
-    background-color: white; /* Optional: Set a background color */
+.final {
+  position: fixed; /* Fix the position */
+  top: 0; /* Align it to the top */
+  left: 0; /* Align it to the left */
+  width: 100%; /* Full width */
+  z-index: 1000; /* Ensure it stays above other content */
+  background-color: white; /* Optional: Set a background color */
 }
-.navbar{
-    padding: 10px 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 80%;
-    margin: auto;
-    z-index: 1000; 
-    height: 70px;
+.navbar {
+  padding: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+  margin: auto;
+  z-index: 1000;
+  height: 70px;
 }
 
-
-.navbar-menu{
-    display: flex;
-    list-style: none;
-    gap: 40px;
-    color: #0e0e0e;
-    font-size: 18px ;
-
+.navbar-menu {
+  display: flex;
+  list-style: none;
+  gap: 40px;
+  color: #0e0e0e;
+  font-size: 18px;
 }
 
 .navbar-menu li {
-    position: relative;
-    padding-bottom: 5px; /* Adjust padding as needed */
+  position: relative;
+  padding-bottom: 5px; /* Adjust padding as needed */
 }
 
 .navbar-menu li::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    border-bottom: 4px solid red; /* Thicker border for better visibility */
-    border-radius: 12px; /* Add bottom-right and bottom-left radius */
-    opacity: 0; /* Initially hidden */
-    transition: all 0.2s ease-out; /* Smooth transition for all properties */
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  border-bottom: 4px solid red; /* Thicker border for better visibility */
+  border-radius: 12px; /* Add bottom-right and bottom-left radius */
+  opacity: 0; /* Initially hidden */
+  transition: all 0.2s ease-out; /* Smooth transition for all properties */
 }
 
 .navbar-menu .val:hover::after,
 .navbar-menu .val.active::after {
-    opacity: 1; /* Make the underline visible on hover and active */
-    width: 60%; /* Width of the underline for hover and active */
+  opacity: 1; /* Make the underline visible on hover and active */
+  width: 60%; /* Width of the underline for hover and active */
 }
-
 
 .navbar-menu li:hover,
 .navbar-menu li.active {
-    color: red; /* Change text color to red on hover and when active */
+  color: red; /* Change text color to red on hover and when active */
 }
 
-.navbar-right{
-    display: flex;
-    align-items:center ;
-    color: #0e0e0e;
-    gap: 40px;
-    font-size: 18px ;
+.navbar-right {
+  display: flex;
+  align-items: center;
+  color: #0e0e0e;
+  gap: 40px;
+  font-size: 18px;
 }
 
-.navbar button{
-    background: transparent;
-    font-size: 16px;
-    color: #0e0e0e;
-    border: 1px solid #0e0e0e;
-    padding: 10px 30px;
-    border-radius: 50px;
-    cursor: pointer;
-
+.navbar button {
+  background: transparent;
+  font-size: 16px;
+  color: #0e0e0e;
+  border: 1px solid #0e0e0e;
+  padding: 10px 30px;
+  border-radius: 50px;
+  cursor: pointer;
 }
 
-.first-nav .logo1{
-    height: auto;
-    width: 105px;
-
+.first-nav .logo1 {
+  height: auto;
+  width: 105px;
 }
-.all{
-    box-shadow: rgba(27, 31, 35, 0.04) 0px 2px 0px, rgba(255, 255, 255, 0.25) 0px 1px 0px inset;
-    
+.all {
+  box-shadow: rgba(27, 31, 35, 0.04) 0px 2px 0px,
+    rgba(255, 255, 255, 0.25) 0px 1px 0px inset;
 }
-.all-second{
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
-}
-
-.first-nav{
-    padding: 10px 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 80%;
-    margin: auto;
-    
-
+.all-second {
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+    rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
 }
 
-.buttons{
-    display: flex;
-
+.first-nav {
+  padding: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+  margin: auto;
 }
 
-.buttons .login-btn{
-    background-color: transparent;
-    font-size: 16px;
-    color: black;
-    border: 1px solid #ffffff;
-    padding: 10px 30px;
-    border-radius: 12px;
-    cursor: pointer;
-    transition: 0.3s;
+.buttons {
+  display: flex;
 }
 
-.buttons .signin-btn{
-    background-color: transparent;
-    font-size: 16px;
-    color: black;
-    border: 1px solid #ffffff;
-    padding: 10px 30px;
-    border-radius: 12px;
-    cursor: pointer;
-    transition: 0.3s;
+.buttons .login-btn {
+  background-color: transparent;
+  font-size: 16px;
+  color: black;
+  border: 1px solid #ffffff;
+  padding: 10px 30px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
-.buttons .signin-btn:hover{
-    background-color:red;
-    color: #f4f4f4;
-    border: 1px solid #ed0606;
-}
-.buttons .login-btn:hover{
-    background: transparent;
-    font-size: 16px;
-    color: #ed0606;
-    border: 1px solid #ed0606;
-    padding: 10px 30px;
-    border-radius: 12px;
-    cursor: pointer;
+.buttons .signin-btn {
+  background-color: transparent;
+  font-size: 16px;
+  color: black;
+  border: 1px solid #ffffff;
+  padding: 10px 30px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
+.buttons .signin-btn:hover {
+  background-color: red;
+  color: #f4f4f4;
+  border: 1px solid #ed0606;
+}
+.buttons .login-btn:hover {
+  background: transparent;
+  font-size: 16px;
+  color: #ed0606;
+  border: 1px solid #ed0606;
+  padding: 10px 30px;
+  border-radius: 12px;
+  cursor: pointer;
+}
 
-.searchbar input{
-    /* width:100%;
+.searchbar input {
+  /* width:100%;
     height: 50px;
     margin-left: 20px;
     border-radius: 12px 0 0 12px;
     border: none; */
-    padding: 10px 25px;
-    width: 100%;
-    font-size: 16px;
-    border: none;
-    outline: none;
-    background-color: #f3f3f3;
-    
+  padding: 10px 25px;
+  width: 100%;
+  font-size: 16px;
+  border: none;
+  outline: none;
+  background-color: #f3f3f3;
 }
 
-.container{
-    width:300px;
-    height: 50px;
-    border-radius: 12px 0 0 12px;
-    border: 1px solid #dce2e6;
+.container {
+  width: 300px;
+  height: 50px;
+  border-radius: 12px 0 0 12px;
+  border: 1px solid #dce2e6;
 
-    background-color: #0e0e0e;
+  background-color: #0e0e0e;
 }
 
-
-.searchbar{
-    display: flex;
-    width: 80%;
-    max-width: 700px;
-    padding: 20px;
-    border-radius: 4px;
-
-
+.searchbar {
+  display: flex;
+  width: 80%;
+  max-width: 700px;
+  padding: 20px;
+  border-radius: 4px;
 }
-.searchbar .icon{
-    background-color: red;
-    padding: 10px 55px 4px 25px;
-    border-radius: 0 8px 8px 0;
-    height: 50px;
-    width: 45px;
+.searchbar .icon {
+  background-color: red;
+  padding: 10px 55px 4px 25px;
+  border-radius: 0 8px 8px 0;
+  height: 50px;
+  width: 45px;
 }
 
-.searchpng{
-    width: 30px;
-   
+.searchpng {
+  width: 30px;
 }
 
-
-#select{
-    background-color: #f3f3f3;
-    display: flex;
-    align-items:center;
-    justify-content:space-around;
-    width: 350px;
-    height: 50px;
-    border-radius: 8px 0 0 8px;
-    padding: 25px 20px;
-    cursor: pointer;
-    color: #797575;
-    font-size: 16px;
-    position: relative;
-    border-right: 1px solid rgb(220, 218, 218);
+#select {
+  background-color: #f3f3f3;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 350px;
+  height: 50px;
+  border-radius: 8px 0 0 8px;
+  padding: 25px 20px;
+  cursor: pointer;
+  color: #797575;
+  font-size: 16px;
+  position: relative;
+  border-right: 1px solid rgb(220, 218, 218);
 }
 
-
-#select ul{
-    position: absolute;
-    top: 120%;
-    left: 0;
-    list-style: none;
-    background:white;
-    width: 100%;
-    border-radius: 4px;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    max-height: 0;
-    z-index: 1;
-    overflow: hidden;
-    transition: max-height 0.5s;
-
+#select ul {
+  position: absolute;
+  top: 120%;
+  left: 0;
+  list-style: none;
+  background: white;
+  width: 100%;
+  border-radius: 4px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  max-height: 0;
+  z-index: 1;
+  overflow: hidden;
+  transition: max-height 0.5s;
 }
 
-#select ul li{
-    padding: 10px 20px;
-    cursor: pointer;
+#select ul li {
+  padding: 10px 20px;
+  cursor: pointer;
 }
 
-#select ul li:hover{
-    background-color: #edebeb;
+#select ul li:hover {
+  background-color: #edebeb;
 }
 
+.values {
+  background: rgb(255, 255, 255);
+  position: absolute;
+  bottom: 52%;
+  list-style: none;
+  width: 130px;
 
-.values{
-    background:rgb(255, 255, 255);
-    position: absolute;
-    bottom:52%;
-    list-style: none;
-    width: 130px;
-   
-    border-radius: 4px;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-
+  border-radius: 4px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
-.values .options{
-    padding: 10px 20px;
-    cursor: pointer;
-
+.values .options {
+  padding: 10px 20px;
+  cursor: pointer;
 }
 
-.values .options:hover{
-    background-color: #edebeb;
+.values .options:hover {
+  background-color: #edebeb;
 }
 
-
-.icon-profile{
-    font-size: 32px;
-    margin-right:10px ;
+.icon-profile {
+  font-size: 32px;
+  margin-right: 10px;
 }
 .val {
-    position: relative;
-  
-  }
-  
-  .dropdown {
-    position: absolute;
-    top: 100%;
+  position: relative;
+}
 
-    background-color: white;
-    list-style: none;
-    
+.dropdown {
+  position: absolute;
+  top: 100%;
 
-    width: 160px;
+  background-color: white;
+  list-style: none;
 
-    display: block;
-    color: #797575;
-    z-index: 1000;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-  }
-  
-  .dropdown li {
-    padding: 12px 20px;
-    cursor: pointer;
-    color: #797575;
-    font-size: 16px ;
-    
- 
-  }
+  width: 160px;
 
-  
-  .dropdown li:hover {
-    background-color: #f0f0f0;
-    padding: 12px 20px;
-    color: #797575;
-  }
-  
+  display: block;
+  color: #797575;
+  z-index: 1000;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.dropdown li {
+  padding: 12px 20px;
+  cursor: pointer;
+  color: #797575;
+  font-size: 16px;
+}
+
+.dropdown li:hover {
+  background-color: #f0f0f0;
+  padding: 12px 20px;
+  color: #797575;
+}

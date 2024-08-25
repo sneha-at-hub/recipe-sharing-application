@@ -1,17 +1,29 @@
-import React, { useRef, useState } from 'react';
-import { FaImages, FaBold, FaItalic, FaUnderline, FaAlignLeft, FaAlignCenter, FaAlignRight, FaListUl, FaListOl, FaUndo, FaRedo } from 'react-icons/fa';
-import './Description.css';
+import React, { useRef, useState } from "react";
+import {
+  FaImages,
+  FaBold,
+  FaItalic,
+  FaUnderline,
+  FaAlignLeft,
+  FaAlignCenter,
+  FaAlignRight,
+  FaListUl,
+  FaListOl,
+  FaUndo,
+  FaRedo,
+} from "react-icons/fa";
+import "./Description.css";
 
 const Description = () => {
   const contentRef = useRef(null);
-  const [fontFamily, setFontFamily] = useState('Arial');
+  const [fontFamily, setFontFamily] = useState("Arial");
 
   // Function to handle image file input change
   const handleFileChange = (event) => {
     const files = Array.from(event.target.files);
     const contentEditableDiv = contentRef.current;
-    
-    files.forEach(file => {
+
+    files.forEach((file) => {
       const reader = new FileReader();
       reader.onload = (e) => {
         const img = `<img src="${e.target.result}" alt="Uploaded" class="embedded-image" />`;
@@ -21,7 +33,7 @@ const Description = () => {
           range.deleteContents(); // Remove any selected content
 
           // Insert image into contentEditable div
-          contentEditableDiv.insertAdjacentHTML('beforeend', img);
+          contentEditableDiv.insertAdjacentHTML("beforeend", img);
 
           // Move cursor after the image
           const newRange = document.createRange();
@@ -46,17 +58,17 @@ const Description = () => {
 
   // Function to handle undo and redo
   const handleUndo = () => {
-    document.execCommand('undo');
+    document.execCommand("undo");
   };
 
   const handleRedo = () => {
-    document.execCommand('redo');
+    document.execCommand("redo");
   };
 
   // Function to handle font-family change
   const handleFontFamilyChange = (event) => {
     setFontFamily(event.target.value);
-    document.execCommand('fontName', false, event.target.value);
+    document.execCommand("fontName", false, event.target.value);
   };
 
   return (
@@ -68,31 +80,44 @@ const Description = () => {
         <button onClick={handleRedo} title="Redo">
           <FaRedo />
         </button>
-        <button onClick={() => formatText('bold')} title="Bold">
+        <button onClick={() => formatText("bold")} title="Bold">
           <FaBold />
         </button>
-        <button onClick={() => formatText('italic')} title="Italic">
+        <button onClick={() => formatText("italic")} title="Italic">
           <FaItalic />
         </button>
-        <button onClick={() => formatText('underline')} title="Underline">
+        <button onClick={() => formatText("underline")} title="Underline">
           <FaUnderline />
         </button>
-        <button onClick={() => formatText('insertOrderedList')} title="Numbered List">
+        <button
+          onClick={() => formatText("insertOrderedList")}
+          title="Numbered List"
+        >
           <FaListOl />
         </button>
-        <button onClick={() => formatText('insertUnorderedList')} title="Bulleted List">
+        <button
+          onClick={() => formatText("insertUnorderedList")}
+          title="Bulleted List"
+        >
           <FaListUl />
         </button>
-        <button onClick={() => formatText('justifyLeft')} title="Align Left">
+        <button onClick={() => formatText("justifyLeft")} title="Align Left">
           <FaAlignLeft />
         </button>
-        <button onClick={() => formatText('justifyCenter')} title="Align Center">
+        <button
+          onClick={() => formatText("justifyCenter")}
+          title="Align Center"
+        >
           <FaAlignCenter />
         </button>
-        <button onClick={() => formatText('justifyRight')} title="Align Right">
+        <button onClick={() => formatText("justifyRight")} title="Align Right">
           <FaAlignRight />
         </button>
-        <select value={fontFamily} onChange={handleFontFamilyChange} className="font-family-selector">
+        <select
+          value={fontFamily}
+          onChange={handleFontFamilyChange}
+          className="font-family-selector"
+        >
           <option value="Arial">Arial</option>
           <option value="Georgia">Georgia</option>
           <option value="Courier New">Courier New</option>
@@ -107,11 +132,11 @@ const Description = () => {
         ref={contentRef}
         placeholder="Type your description here..."
         style={{ fontFamily: fontFamily }}
-      >
-      </div>
+      ></div>
       <div className="image-upload-container">
         <label htmlFor="image-upload" className="image-upload-label">
-          <FaImages style={{fontSize:'24px', marginRight:'20px'}} />  Add Image
+          <FaImages style={{ fontSize: "24px", marginRight: "20px" }} /> Add
+          Image
           <input
             type="file"
             id="image-upload"
