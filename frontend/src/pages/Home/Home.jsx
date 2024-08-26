@@ -5,7 +5,7 @@ import RecipeCard from '../../components/RecipeCard/RecipeCard';
 import { useState } from 'react';
 import Popular from '../../components/Popular/Popular';
 import Header from '../../components/Header/Header';
-
+import Grocery from '../../components/GroceryList/Grocery';
 
 
 const Home = () => {
@@ -15,8 +15,10 @@ const Home = () => {
         <div className="home-container">
             <RecipeCard category={category} setCategory={setCategory}/>
             <Explore/>
+            <Grocery />
             <Popular />
             <Header />
+
          
             
     
