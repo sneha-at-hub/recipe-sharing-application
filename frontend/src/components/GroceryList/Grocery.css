@@ -6,20 +6,20 @@
   justify-content: flex-start;
   align-items: center;
   width: 100%;
-  background: #F5F5F5;
+  background: #f5f5f5;
   min-height: 100vh;
   padding: 20px;
 
   box-sizing: border-box;
 }
 
-.main-container-grocery{
+.main-container-grocery {
   background-color: rgb(255, 255, 255);
   border-radius: 12px;
   width: 100%;
   padding: 20px;
   margin-top: 200px;
-  max-width: 80%
+  max-width: 80%;
 }
 /* Input container styling */
 .grocery-input-container {
@@ -28,8 +28,6 @@
   margin-bottom: 20px;
   width: 100%;
   margin-top: 20px;
-
-  ;
 }
 
 /* Input field styling */
@@ -38,7 +36,6 @@
   padding: 10px;
   margin-bottom: 0px;
   font-size: 1rem;
-  
 
   border: 2px solid #ddd;
   border-radius: 4px;
@@ -110,7 +107,6 @@
   list-style: none;
   padding: 0;
   width: 100%;
-
 }
 
 .grocery-item {
@@ -213,7 +209,6 @@
   color: white;
 }
 
-
 .grocery-save-btn {
   background-color: #e0dfdf;
   color: rgb(98, 98, 98);
@@ -233,4 +228,3 @@
   background-color: #cbcbcb;
   color: rgb(56, 54, 54);
 }
-
