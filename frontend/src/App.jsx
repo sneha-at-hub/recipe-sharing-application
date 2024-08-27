@@ -8,6 +8,7 @@ import Login from "./components/Login/Login";
 import Detail from "./pages/Detail/Detail";
 import Addrecipeshere from "./pages/Recipes/Addrecipeshere";
 import Demo from "./components/Description/Demo";
+import Grocery from "./components/GroceryList/Grocery";
 
 const App = () => {
   return (
@@ -23,6 +24,7 @@ const App = () => {
           <Route path="/detail" element={<Detail />} />
           <Route path="/recipeadd" element={<Addrecipeshere />} />
           <Route path="/Demo" element={<Demo />} />
+          <Route path="/grocery-list" element={<Grocery />} />
         </Routes>
       </div>
       <Footer />
