@@ -1,17 +1,26 @@
 /* Container to cover the full viewport */
 .grocery-app {
   display: flex;
-  margin-top: 200px;
+
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   width: 100%;
+  background: #F5F5F5;
   min-height: 100vh;
   padding: 20px;
 
   box-sizing: border-box;
 }
 
+.main-container-grocery{
+  background-color: rgb(255, 255, 255);
+  border-radius: 12px;
+  width: 100%;
+  padding: 20px;
+  margin-top: 200px;
+  max-width: 80%
+}
 /* Input container styling */
 .grocery-input-container {
   display: flex;
@@ -19,7 +28,7 @@
   margin-bottom: 20px;
   width: 100%;
   margin-top: 20px;
-  max-width: 80%
+
   ;
 }
 
@@ -70,7 +79,7 @@
   align-items: center;
   padding: 10px;
   width: 100%;
-  max-width: 80%}
+}
 
 .grocery-filter {
   padding: 10px;
@@ -96,12 +105,13 @@
   color: white;
 }
 
-/* Todo list styling */
+/* grocerytodo list styling */
 .grocery-list {
   list-style: none;
   padding: 0;
   width: 100%;
-  max-width: 80%}
+
+}
 
 .grocery-item {
   background-color: white;

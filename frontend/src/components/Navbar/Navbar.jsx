@@ -19,7 +19,12 @@ const Navbar = () => {
   useEffect(() => {
     if (location.pathname === "/recipeadd") {
       setActiveItem("Add Recipe");
-    } else {
+    }
+    else if(location.pathname == "/grocery-list"){
+      setActiveItem("Grocery List");
+
+    } 
+    else {
       setActiveItem(null);
     }
   }, [location.pathname]);
@@ -67,6 +72,8 @@ const Navbar = () => {
       navigate("/recipeadd"); // Navigate to /recipeadd
     } else if (item === "Home") {
       navigate("/");
+    } else if (item =="Grocery List"){
+      navigate("/grocery-list")
     }
   };
 
