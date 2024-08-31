@@ -50,6 +50,7 @@ class Recipe(models.Model):
     title = models.CharField(max_length=255)
     subtitle = models.CharField(max_length=255, null=True, blank=True)
     description = models.TextField()
+    detailed_description = models.TextField(null=True, blank=True)
     ingredient = models.TextField()
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, blank=True)
     prep_time = models.CharField(max_length=50, null=True, blank=True)  # New field for preparation time
@@ -71,8 +72,7 @@ class Recipe(models.Model):
     def __str__(self):
         return self.title
 
-    def __str__(self):
-        return self.title
+
 class Comment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, related_name='comments')

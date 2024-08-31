@@ -29,6 +29,12 @@ const Addrecipe = () => {
 
         {/* Description */}
         <div className="form-group">
+          <label htmlFor="recipe-overview" className="form-label">Overview</label>
+          <textarea id="recipe-overview-description" className="form-textarea" placeholder="Introduce your recipe 'OVERVIEW'" />
+        </div>
+
+        {/* Description */}
+        <div className="form-group">
           <label htmlFor="recipe-description" className="form-label">Description</label>
           <Description />
         </div>
