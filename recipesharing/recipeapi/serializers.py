@@ -44,18 +44,16 @@ class RegisterSerializer(serializers.ModelSerializer):
         user.save()
         return user
 
-class RecipeSerializer(serializers.ModelSerializer):
-    image = serializers.SerializerMethodField()
 
+
+class RecipeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Recipe
-        fields = '__all__'
+        fields = ['title', 'subtitle', 'ingredient', 'description', 'detailed_description', 'category', 'prep_time', 'additional_time', 'total_time', 'servings', 'yield_amount', 'cooking_time', 'image', 'user']
 
-    def get_image(self, obj):
-        request = self.context.get('request')
-        if obj.image:
-            return request.build_absolute_uri(obj.image.url)
-        return None
+# Define __all__ to control which symbols are exposed
+__all__ = ['RecipeSerializer']
+
     
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
