@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Dropdown.css";
 
 const Dropdown = () => {
   const [isOpen, setIsOpen] = useState(false); // State to manage dropdown visibility
   const [selectedCategory, setSelectedCategory] = useState("Select Category"); // State for selected category
+  const [categories, setCategories] = useState([]); // State to store fetched categories
 
   // Function to toggle the dropdown
   const toggleDropdown = () => {
@@ -12,9 +13,28 @@ const Dropdown = () => {
 
   // Function to handle category selection
   const handleCategorySelect = (category) => {
-    setSelectedCategory(category);
+    setSelectedCategory(category.name); // Use the name field from the category object
     setIsOpen(false); // Close the dropdown after selection
   };
+
+  // Fetch categories from the API
+  useEffect(() => {
+    // Replace with your actual API URL
+    const fetchCategories = async () => {
+      try {
+        const response = await fetch("http://localhost:8000/api/categories/"); // Replace with your Django API endpoint
+        if (!response.ok) {
+          throw new Error("Failed to fetch categories");
+        }
+        const data = await response.json();
+        setCategories(data); // Set fetched categories in state
+      } catch (error) {
+        console.error("Error fetching categories:", error);
+      }
+    };
+
+    fetchCategories();
+  }, []); // Empty dependency array ensures this effect runs only once after the initial render
 
   return (
     <div className="custom-dropdown-container">
@@ -40,42 +60,15 @@ const Dropdown = () => {
             className="custom-dropdown-menu"
             style={{ maxHeight: isOpen ? "300px" : "0" }}
           >
-            <li
-              className="custom-dropdown-option"
-              onClick={() => handleCategorySelect("Item 1")}
-            >
-              Item 1
-            </li>
-            <li
-              className="custom-dropdown-option"
-              onClick={() => handleCategorySelect("Item 2")}
-            >
-              Item 2
-            </li>
-            <li
-              className="custom-dropdown-option"
-              onClick={() => handleCategorySelect("Item 3")}
-            >
-              Item 3
-            </li>
-            <li
-              className="custom-dropdown-option"
-              onClick={() => handleCategorySelect("Item 4")}
-            >
-              Item 4
-            </li>
-            <li
-              className="custom-dropdown-option"
-              onClick={() => handleCategorySelect("Lunch")}
-            >
-              Lunch
-            </li>
-            <li
-              className="custom-dropdown-option"
-              onClick={() => handleCategorySelect("Item Meal")}
-            >
-              Item Meal
-            </li>
+            {categories.map((category) => (
+              <li
+                key={category.id}
+                className="custom-dropdown-option"
+                onClick={() => handleCategorySelect(category)}
+              >
+                {category.name}
+              </li>
+            ))}
           </ul>
         )}
       </div>
