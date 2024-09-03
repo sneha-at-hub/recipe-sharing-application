@@ -1,10 +1,12 @@
 import "./Navbar.css";
 import { assets } from "../../assets/assets";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import * as jwt_decode from "jwt-decode";
+import { SearchContext } from "../../context/SearchContext";
 import axios from "axios";
 import { HiOutlineUserCircle } from "react-icons/hi2";
 import { useNavigate, useLocation } from "react-router-dom"; // Import useLocation
+
 
 const Navbar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -15,6 +17,12 @@ const Navbar = () => {
   const [userName, setUserName] = useState(null);
   const navigate = useNavigate();
   const location = useLocation();
+
+  const { setSearchQuery } = useContext(SearchContext);
+
+  const handleSearch = (event) => {
+    setSearchQuery(event.target.value);
+  };
 
   useEffect(() => {
     if (location.pathname === "/recipeadd") {
@@ -156,7 +164,7 @@ const Navbar = () => {
                 </ul>
               </div>
 
-              <input type="text" placeholder="Search Recipes" />
+              <input type="text" placeholder="Search Recipes" onChange={handleSearch} />
               <div className="icon">
                 <img src={assets.search} alt="" className="searchpng" />
               </div>
