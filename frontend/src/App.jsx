@@ -1,3 +1,4 @@
+import React, { useContext } from "react";
 import Navbar from "./components/Navbar/Navbar";
 import Home from "./pages/Home/Home";
 import { Route, Routes } from "react-router-dom";
@@ -10,27 +11,35 @@ import Addrecipeshere from "./pages/Recipes/Addrecipeshere";
 import Demo from "./components/Description/Demo";
 import Grocery from "./components/GroceryList/Grocery";
 import Signup from "./pages/Signup/Signup";
+import { SearchContext } from "./context/SearchContext";
+
 
 const App = () => {
+  const { searchQuery } = useContext(SearchContext); // Access searchQuery from context
+
   return (
     <>
       <div className="app">
         <Navbar />
-
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/Meals" element={<Meals />} />
-          <Route path="/popular" element={<Popular />} />
-          <Route path="/login" element={<Login />} />
-          
-          <Route path="/signup" element={<Signup />} />
-
-          <Route path="/detail" element={<Detail />} />
-          <Route path="/recipeadd" element={<Addrecipeshere />} />
-          <Route path="/Demo" element={<Demo />} />
-          <Route path="/grocery-list" element={<Grocery />} />
-  
-        </Routes>
+        
+        {/* Conditionally render Popular with a bottom margin if there is a search query */}
+        {searchQuery ? (
+          <div style={{ marginTop: "100px" }}>
+            <Popular />
+          </div>
+        ) : (
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/Meals" element={<Meals />} />
+            <Route path="/popular" element={<Popular />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/detail" element={<Detail />} />
+            <Route path="/recipeadd" element={<Addrecipeshere />} />
+            <Route path="/Demo" element={<Demo />} />
+            <Route path="/grocery-list" element={<Grocery />} />
+          </Routes>
+        )}
       </div>
       <Footer />
     </>
@@ -38,3 +47,4 @@ const App = () => {
 };
 
 export default App;
+
