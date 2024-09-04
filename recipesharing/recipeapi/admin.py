@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import User, Profile, Recipe, Rating# Adjusted import statement to relative import
+from .models import User, Profile, Recipe, Rating, Category# Adjusted import statement to relative import
 
 class UserAdmin(admin.ModelAdmin):
     list_display = ['username', 'email']
@@ -14,6 +14,12 @@ class RecipeAdmin(admin.ModelAdmin):
 class RatingAdmin(admin.ModelAdmin):
     list_display = ['user', 'recipe']
     
+    
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = ['name']
+
+
+admin.site.register(Category, CategoryAdmin)    
 admin.site.register(User, UserAdmin)
 admin.site.register(Profile, ProfileAdmin)
 admin.site.register(Recipe, RecipeAdmin)
