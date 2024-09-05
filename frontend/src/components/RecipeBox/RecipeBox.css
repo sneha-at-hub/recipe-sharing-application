@@ -3,6 +3,7 @@
     margin: 0 auto;
     padding: 20px;
     margin-top: 180px;
+
   }
   
   .recipe-box h1 {
@@ -24,7 +25,7 @@
   }
   
   .food-list > div {
-    flex: 0 0 calc(22% - 20px); /* Adjust width for consistent sizing */
+    flex: 0 0 calc(300px - 20px); /* Reduced width for slightly smaller boxes */
     box-sizing: border-box;
   }
   

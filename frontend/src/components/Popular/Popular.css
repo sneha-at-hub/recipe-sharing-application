@@ -24,7 +24,7 @@
 }
 
 .popular-grid > div {
-  flex: 0 0 calc(22% - 20px); /* Reduced width for slightly smaller boxes */
+  flex: 0 0 calc(300px - 20px); /* Reduced width for slightly smaller boxes */
   box-sizing: border-box;
 }
 
