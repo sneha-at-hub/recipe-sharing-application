@@ -8,7 +8,6 @@ import Footer from "./components/Footer/Footer";
 import Login from "./pages/Login/Login";
 import Detail from "./pages/Detail/Detail";
 import Addrecipeshere from "./pages/Recipes/Addrecipeshere";
-import Demo from "./components/Description/Demo";
 import Grocery from "./components/GroceryList/Grocery";
 import Signup from "./pages/Signup/Signup";
 import { SearchContext } from "./context/SearchContext";
@@ -36,7 +35,6 @@ const App = () => {
             <Route path="/signup" element={<Signup />} />
             <Route path="/detail" element={<Detail />} />
             <Route path="/recipeadd" element={<Addrecipeshere />} />
-            <Route path="/Demo" element={<Demo />} />
             <Route path="/grocery-list" element={<Grocery />} />
           </Routes>
         )}

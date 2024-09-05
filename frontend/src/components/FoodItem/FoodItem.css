@@ -67,6 +67,20 @@
 
 .food-item-img-container{
     position: relative;
+
+}
+.food-item-img-container .checking{
+    position: absolute;
+    top: 20px;
+    font-size: 40px;
+    right: 60px;
+    background-color: red;
+    color: white;
+    position: absolute;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 50%;
+    
 }
 
 

@@ -47,6 +47,9 @@ const Navbar = () => {
   const handleLoginClick = () => {
     navigate("/login"); // Navigate to /login
   };
+  const handlesignupClick = () => {
+    navigate("/signup"); // Navigate to /login
+  };
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -205,7 +208,8 @@ const Navbar = () => {
                   >
                     |
                   </span>
-                  <button className="signin-btn">Signup</button>
+                  <button className="signin-btn"
+                  onClick={handlesignupClick}>Signup</button>
                 </>
               )}
             </div>

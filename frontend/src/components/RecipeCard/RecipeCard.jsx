@@ -66,6 +66,8 @@ const RecipeCard = ({ category }) => {
                 time = {item.cooking_time}
                 ratings={item.ratings}
                 image={item.image}
+                user = {item.user}
+
               />
             ))}
           </div>
