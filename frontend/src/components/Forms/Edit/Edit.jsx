@@ -165,7 +165,8 @@ const Edit = () => {
   };
 
   return (
-    <div className="editrecipe-container">
+    <div className="overall-container">
+            <div className="editrecipe-container">
       <div className="form-container">
         <h1 className="h1-editrecipe">Edit Recipe</h1>
         {successMessage && <p className="success-message">{successMessage}</p>}
@@ -257,10 +258,13 @@ const Edit = () => {
             <input type="file" id="image" className="form-input" onChange={handleImageChange} />
           </div>
 
-          <button type="submit" className="submit-button">Update Recipe</button>
+          <button type="submit" className="add-recipe-button">Update Recipe</button>
         </form>
       </div>
     </div>
+
+    </div>
+
   );
 };
 
