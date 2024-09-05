@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import {
   FaImages,
   FaBold,
@@ -14,11 +14,25 @@ import {
 } from "react-icons/fa";
 import "./Description.css";
 
-const Description = () => {
+const Description = ({ value, onChange }) => {
   const contentRef = useRef(null);
   const [fontFamily, setFontFamily] = useState("Arial");
 
-  // Function to handle image file input change
+  // Update the contentEditable div when `value` changes
+  useEffect(() => {
+    if (contentRef.current && value !== contentRef.current.innerHTML) {
+      contentRef.current.innerHTML = value || "";
+    }
+  }, [value]);
+
+  // Handle changes to the contentEditable div
+  const handleContentChange = () => {
+    if (onChange) {
+      onChange(contentRef.current.innerHTML);
+    }
+  };
+
+  // Function to handle file input changes
   const handleFileChange = (event) => {
     const files = Array.from(event.target.files);
     const contentEditableDiv = contentRef.current;
@@ -31,11 +45,8 @@ const Description = () => {
 
         if (range && contentEditableDiv) {
           range.deleteContents(); // Remove any selected content
-
-          // Insert image into contentEditable div
           contentEditableDiv.insertAdjacentHTML("beforeend", img);
 
-          // Move cursor after the image
           const newRange = document.createRange();
           newRange.setStartAfter(contentEditableDiv.lastChild);
           newRange.collapse(true);
@@ -43,7 +54,6 @@ const Description = () => {
           selection.removeAllRanges();
           selection.addRange(newRange);
 
-          // Ensure the editor remains focused
           contentEditableDiv.focus();
         }
       };
@@ -132,6 +142,7 @@ const Description = () => {
         ref={contentRef}
         placeholder="Type your description here..."
         style={{ fontFamily: fontFamily }}
+        onInput={handleContentChange} // Handle content changes
       ></div>
       <div className="image-upload-container">
         <label htmlFor="image-upload" className="image-upload-label">

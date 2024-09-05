@@ -1,50 +1,50 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 import "./FoodItem.css";
 import { VscHeartFilled, VscHeart } from "react-icons/vsc";
 import { IoMdTime } from "react-icons/io";
 import { CiEdit } from "react-icons/ci";
 import { FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa"; // Import star icons
-
-import PropTypes from 'prop-types';
-
-
-
+import PropTypes from "prop-types";
 
 const FoodItem = ({ id, name, ratings, description, image, time, user }) => {
-  // State to manage whether the heart is filled or not
   const [isHeartFilled, setIsHeartFilled] = useState(false);
   const [jwtUserId, setJwtUserId] = useState(null);
-  // Inside your FoodItem component
-FoodItem.propTypes = {
-  id: PropTypes.number.isRequired,
-  name: PropTypes.string.isRequired,
-  ratings: PropTypes.number.isRequired,
-  description: PropTypes.string.isRequired,
-  image: PropTypes.string.isRequired,
-  time: PropTypes.string.isRequired,
-  user: PropTypes.number.isRequired,
-};
+  const navigate = useNavigate(); // Initialize useNavigate
 
-  // Toggle the heart icon state
+  // PropTypes for type checking
+  FoodItem.propTypes = {
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    ratings: PropTypes.number.isRequired,
+    description: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
+    time: PropTypes.string.isRequired,
+    user: PropTypes.number.isRequired,
+  };
+
+  // Toggle heart state
   const handleHeartClick = () => {
     setIsHeartFilled(!isHeartFilled);
   };
 
-  // Parse the JWT token from local storage to get user ID
+  // Navigate to the edit page
+  const handleEditClick = () => {
+    navigate(`/edit-recipe/${id}`); // Navigate to the edit page using the recipe id
+  };
+
+  // Parse JWT to get user ID
   useEffect(() => {
     const token = localStorage.getItem("access_token");
     if (token) {
-      // Decode the JWT token (it's Base64 encoded)
-      const base64Url = token.split('.')[1];
-      const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+      const base64Url = token.split(".")[1];
+      const base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
       const decodedPayload = JSON.parse(atob(base64));
-      
-      // Set the user ID from the decoded token
       setJwtUserId(decodedPayload.user_id);
     }
   }, []);
 
-  // Function to render stars based on ratings
+  // Render stars based on ratings
   const renderStars = (ratings) => {
     const stars = [];
     for (let i = 1; i <= 5; i++) {
@@ -70,7 +70,9 @@ FoodItem.propTypes = {
         )}
 
         {/* Conditionally render the CiEdit icon if the user matches the ID from the JWT */}
-        {jwtUserId === user && <CiEdit className="checking" />}
+        {jwtUserId === user && (
+          <CiEdit className="checking" onClick={handleEditClick} /> // Call handleEditClick when clicked
+        )}
       </div>
 
       <div className="food-item-info">
@@ -83,9 +85,7 @@ FoodItem.propTypes = {
           <p className="food-item-time">{time}</p>
         </div>
         <div className="one-div">
-          <div className="food-item-stars">
-            {renderStars(ratings)} {/* Render the stars based on ratings */}
-          </div>
+          <div className="food-item-stars">{renderStars(ratings)}</div>
           <p className="food-item-ratings">{ratings} Ratings</p>
         </div>
       </div>

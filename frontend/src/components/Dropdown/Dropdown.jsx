@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "./Dropdown.css";
 
-const Dropdown = () => {
+const Dropdown = ({ value, onChange }) => {
   const [isOpen, setIsOpen] = useState(false); // State to manage dropdown visibility
-  const [selectedCategory, setSelectedCategory] = useState("Select Category"); // State for selected category
+  const [selectedCategory, setSelectedCategory] = useState(value || "Select Category"); // State for selected category
   const [categories, setCategories] = useState([]); // State to store fetched categories
 
   // Function to toggle the dropdown
@@ -15,6 +15,9 @@ const Dropdown = () => {
   const handleCategorySelect = (category) => {
     setSelectedCategory(category.name); // Use the name field from the category object
     setIsOpen(false); // Close the dropdown after selection
+    if (onChange) {
+      onChange(category); // Notify the parent component of the selected category object
+    }
   };
 
   // Fetch categories from the API

@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import Dropdown from '../../Dropdown/Dropdown';
-import Description from '../../Description/Description';
-import './Addrecipe.css';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import Description from "../../Description/Description";
+import "./Addrecipe.css";
+import Dropdown from "../../Dropdown/Dropdown";
 
 const Addrecipe = () => {
   const [formData, setFormData] = useState({
@@ -11,7 +11,7 @@ const Addrecipe = () => {
     ingredients: '',
     overview: '',
     description: '',
-    category: '',
+    category: '', // Change this to hold category ID
     prepTime: '',
     additionalTime: '',
     totalTime: '',
@@ -22,30 +22,26 @@ const Addrecipe = () => {
   const [image, setImage] = useState(null);
   const [successMessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
-  const [userId, setUserId] = useState(null); // State for user ID
+  const [userId, setUserId] = useState(null);
+
+  // Fetch user data (mock function)
+  const fetchUserData = async () => {
+    // Replace with your actual API call
+    try {
+      const token = localStorage.getItem('access_token');
+      if (!token) throw new Error('No access token found');
+
+      const response = await axios.get('http://127.0.0.1:8000/api/user-from-token/', {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+
+      setUserId(response.data.id);
+    } catch (error) {
+      console.error('Error fetching user data:', error);
+    }
+  };
 
   useEffect(() => {
-    const fetchUserData = async () => {
-      try {
-        const token = localStorage.getItem('access_token');
-        if (!token) {
-          console.error('No access token found');
-          return;
-        }
-
-        const response = await axios.get('http://127.0.0.1:8000/api/user-from-token/', {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-
-        console.log('User data fetched:', response.data);
-        setUserId(response.data.id); // Store user ID
-      } catch (error) {
-        console.error('Error fetching user data:', error);
-      }
-    };
-
     fetchUserData();
   }, []);
 
@@ -67,6 +63,13 @@ const Addrecipe = () => {
     }
   };
 
+  const handleCategoryChange = (category) => {
+    setFormData({
+      ...formData,
+      category: category.id, // Store the category ID in formData
+    });
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -76,7 +79,7 @@ const Addrecipe = () => {
     data.append('ingredient', formData.ingredients);
     data.append('description', formData.overview);
     data.append('detailed_description', formData.description);
-    data.append('category', formData.category);
+    data.append('category', formData.category); // Send the category ID
     data.append('prep_time', formData.prepTime);
     data.append('additional_time', formData.additionalTime);
     data.append('total_time', formData.totalTime);
@@ -88,24 +91,15 @@ const Addrecipe = () => {
       data.append('image', image);
     }
 
-    // Ensure `user` field is added if required by the API
     if (userId) {
-      data.append('user', userId); // Append user ID to form data
+      data.append('user', userId);
     } else {
       console.error('User ID is not available');
     }
 
     try {
       const token = localStorage.getItem('access_token');
-      if (!token) {
-        console.error('No access token found in local storage');
-        return;
-      }
-
-      // Debug: log form data
-      for (const pair of data.entries()) {
-        console.log(`${pair[0]}: ${pair[1]}`);
-      }
+      if (!token) throw new Error('No access token found in local storage');
 
       const response = await axios.post('http://127.0.0.1:8000/api/recipes/', data, {
         headers: {
@@ -121,7 +115,6 @@ const Addrecipe = () => {
       setErrorMessage('Failed to add recipe.');
     }
   };
-
   return (
     <div className="addrecipe-container">
       <div className="form-container">
@@ -132,88 +125,158 @@ const Addrecipe = () => {
           {/* Title */}
           <div className="form-group">
             <label htmlFor="title" className="form-label">Title</label>
-            <input type="text" id="title" className="form-input" value={formData.title} onChange={handleChange} placeholder="Enter the recipe title" />
+            <input
+              type="text"
+              id="title"
+              className="form-input"
+              value={formData.title}
+              onChange={handleChange}
+              placeholder="Enter the recipe title"
+            />
           </div>
 
           {/* Subtitle */}
           <div className="form-group">
             <label htmlFor="subtitle" className="form-label">Subtitle</label>
-            <input type="text" id="subtitle" className="form-input" value={formData.subtitle} onChange={handleChange} placeholder="Enter a brief subtitle" />
+            <input
+              type="text"
+              id="subtitle"
+              className="form-input"
+              value={formData.subtitle}
+              onChange={handleChange}
+              placeholder="Enter the subtitle"
+            />
           </div>
 
           {/* Ingredients */}
           <div className="form-group">
             <label htmlFor="ingredients" className="form-label">Ingredients</label>
-            <textarea id="ingredients" className="form-textarea" value={formData.ingredients} onChange={handleChange} placeholder="List ingredients here..." />
+            <textarea
+              id="ingredients"
+              className="form-input"
+              value={formData.ingredients}
+              onChange={handleChange}
+              placeholder="Enter the ingredients"
+            />
           </div>
 
           {/* Overview */}
           <div className="form-group">
             <label htmlFor="overview" className="form-label">Overview</label>
-            <textarea id="overview" className="form-textarea" value={formData.overview} onChange={handleChange} placeholder="Introduce your recipe 'OVERVIEW'" />
+            <textarea
+              id="overview"
+              className="form-input"
+              value={formData.overview}
+              onChange={handleChange}
+              placeholder="Enter a brief overview"
+            />
           </div>
 
-          {/* Description */}
+          {/* Detailed Description */}
           <div className="form-group">
-            <label htmlFor="description" className="form-label">Description</label>
-            <Description value={formData.description} onChange={(value) => setFormData({ ...formData, description: value })} />
+            <label htmlFor="description" className="form-label">Detailed Description</label>
+            <Description
+              value={formData.description}
+              onChange={(value) => setFormData({ ...formData, description: value })}
+            />
           </div>
 
           {/* Category */}
           <div className="form-group">
             <label htmlFor="category" className="form-label">Category</label>
-            <Dropdown value={formData.category} onChange={(value) => setFormData({ ...formData, category: value })} />
+            <Dropdown value={formData.category} onChange={handleCategoryChange} />
+          </div>
+          {/* Prep Time */}
+          <div className="form-group">
+            <label htmlFor="prepTime" className="form-label">Prep Time</label>
+            <input
+              type="text"
+              id="prepTime"
+              className="form-input"
+              value={formData.prepTime}
+              onChange={handleChange}
+              placeholder="Enter preparation time"
+            />
           </div>
 
-          <div className="flex-group">
-            {/* Prep Time */}
-            <div className="form-group">
-              <label htmlFor="prepTime" className="form-label">Preparation Time</label>
-              <input type="text" id="prepTime" className="form-input" value={formData.prepTime} onChange={handleChange} placeholder="E.g., 20 minutes" />
-            </div>
-
-            {/* Additional Time */}
-            <div className="form-group">
-              <label htmlFor="additionalTime" className="form-label">Additional Time</label>
-              <input type="text" id="additionalTime" className="form-input" value={formData.additionalTime} onChange={handleChange} placeholder="E.g., 10 minutes" />
-            </div>
+          {/* Additional Time */}
+          <div className="form-group">
+            <label htmlFor="additionalTime" className="form-label">Additional Time</label>
+            <input
+              type="text"
+              id="additionalTime"
+              className="form-input"
+              value={formData.additionalTime}
+              onChange={handleChange}
+              placeholder="Enter additional time"
+            />
           </div>
 
-          <div className="flex-group">
-            {/* Total Time */}
-            <div className="form-group">
-              <label htmlFor="totalTime" className="form-label">Total Time</label>
-              <input type="text" id="totalTime" className="form-input" value={formData.totalTime} onChange={handleChange} placeholder="E.g., 30 minutes" />
-            </div>
-
-            {/* Servings */}
-            <div className="form-group">
-              <label htmlFor="servings" className="form-label">Servings</label>
-              <input type="text" id="servings" className="form-input" value={formData.servings} onChange={handleChange} placeholder="E.g., 4 servings" />
-            </div>
+          {/* Total Time */}
+          <div className="form-group">
+            <label htmlFor="totalTime" className="form-label">Total Time</label>
+            <input
+              type="text"
+              id="totalTime"
+              className="form-input"
+              value={formData.totalTime}
+              onChange={handleChange}
+              placeholder="Enter total time"
+            />
           </div>
 
-          <div className="flex-group">
-            {/* Yield */}
-            <div className="form-group">
-              <label htmlFor="yieldAmount" className="form-label">Yield</label>
-              <input type="text" id="yieldAmount" className="form-input" value={formData.yieldAmount} onChange={handleChange} placeholder="E.g., 1 loaf" />
-            </div>
-
-            {/* Cooking Time */}
-            <div className="form-group">
-              <label htmlFor="cookingTime" className="form-label">Cooking Time</label>
-              <input type="text" id="cookingTime" className="form-input" value={formData.cookingTime} onChange={handleChange} placeholder="E.g., 45 minutes" />
-            </div>
+          {/* Servings */}
+          <div className="form-group">
+            <label htmlFor="servings" className="form-label">Servings</label>
+            <input
+              type="text"
+              id="servings"
+              className="form-input"
+              value={formData.servings}
+              onChange={handleChange}
+              placeholder="Enter number of servings"
+            />
           </div>
 
-          {/* Image Upload */}
+          {/* Yield Amount */}
+          <div className="form-group">
+            <label htmlFor="yieldAmount" className="form-label">Yield Amount</label>
+            <input
+              type="text"
+              id="yieldAmount"
+              className="form-input"
+              value={formData.yieldAmount}
+              onChange={handleChange}
+              placeholder="Enter yield amount"
+            />
+          </div>
+
+          {/* Cooking Time */}
+          <div className="form-group">
+            <label htmlFor="cookingTime" className="form-label">Cooking Time</label>
+            <input
+              type="text"
+              id="cookingTime"
+              className="form-input"
+              value={formData.cookingTime}
+              onChange={handleChange}
+              placeholder="Enter cooking time"
+            />
+          </div>
+
+          {/* Image */}
           <div className="form-group">
             <label htmlFor="image" className="form-label">Recipe Image</label>
-            <input type="file" id="image" className="form-input" onChange={handleImageChange} accept="image/*" />
+            <input
+              type="file"
+              id="image"
+              className="form-input"
+              accept="image/*"
+              onChange={handleImageChange}
+            />
           </div>
 
-          <button type="submit" className="add-recipe-button">Add Recipe</button>
+          <button type="submit" className="add-recipe-button">Submit</button>
         </form>
       </div>
     </div>

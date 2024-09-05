@@ -60,7 +60,7 @@ const RecipeCard = ({ category }) => {
             {recipes.map((item, index) => (
               <FoodItem
                 key={index}
-                id={item._id}
+                id={item.id}
                 name={item.title}
                 description={item.subtitle}
                 time = {item.cooking_time}

@@ -49,7 +49,7 @@ class RegisterSerializer(serializers.ModelSerializer):
 class RecipeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Recipe
-        fields = ['title', 'subtitle', 'ingredient', 'description', 'detailed_description', 'category', 'prep_time', 'additional_time', 'total_time', 'servings', 'yield_amount', 'cooking_time', 'image', 'user']
+        fields = '__all__'
 
 # Define __all__ to control which symbols are exposed
 __all__ = ['RecipeSerializer']

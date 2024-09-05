@@ -12,6 +12,7 @@ import Grocery from "./components/GroceryList/Grocery";
 import Signup from "./pages/Signup/Signup";
 import { SearchContext } from "./context/SearchContext";
 import RecipeBox from "./components/RecipeBox/RecipeBox";
+import Edit from "./components/Forms/Edit/Edit";
 
 
 const App = () => {
@@ -39,6 +40,7 @@ const App = () => {
             <Route path="/grocery-list" element={<Grocery />} />
 
             <Route path="/recipebox" element={<RecipeBox />} />
+            <Route path="/edit-recipe/:recipeId" element={<Edit />} /> {/* Route for editing the recipe */}
           </Routes>
         )}
       </div>
