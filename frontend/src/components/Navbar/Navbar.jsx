@@ -31,7 +31,11 @@ const Navbar = () => {
     else if(location.pathname == "/grocery-list"){
       setActiveItem("Grocery List");
 
-    } 
+    }
+    else if(location.pathname == "/recipebox"){
+      setActiveItem("Recipe Box");
+
+    }
     else {
       setActiveItem(null);
     }
@@ -85,6 +89,8 @@ const Navbar = () => {
       navigate("/");
     } else if (item =="Grocery List"){
       navigate("/grocery-list")
+    } else if (item == "Recipe Box"){
+      navigate("/recipebox")
     }
   };
 
