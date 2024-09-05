@@ -11,6 +11,7 @@ import Addrecipeshere from "./pages/Recipes/Addrecipeshere";
 import Grocery from "./components/GroceryList/Grocery";
 import Signup from "./pages/Signup/Signup";
 import { SearchContext } from "./context/SearchContext";
+import RecipeBox from "./components/RecipeBox/RecipeBox";
 
 
 const App = () => {
@@ -36,6 +37,8 @@ const App = () => {
             <Route path="/detail" element={<Detail />} />
             <Route path="/recipeadd" element={<Addrecipeshere />} />
             <Route path="/grocery-list" element={<Grocery />} />
+
+            <Route path="/recipebox" element={<RecipeBox />} />
           </Routes>
         )}
       </div>

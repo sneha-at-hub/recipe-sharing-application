@@ -1,0 +1,30 @@
+.recipe-box {
+    width: 90%;
+    margin: 0 auto;
+    padding: 20px;
+    margin-top: 180px;
+  }
+  
+  .recipe-box h1 {
+    color: #262626;
+    font-weight: 500;
+    font-size: 30px;
+    text-align: center;
+    margin: 30px 0 40px 0;
+  }
+  
+  .recipe-box h1:hover {
+    color: #ff0000;
+  }
+  
+  .food-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+  }
+  
+  .food-list > div {
+    flex: 0 0 calc(22% - 20px); /* Adjust width for consistent sizing */
+    box-sizing: border-box;
+  }
+  

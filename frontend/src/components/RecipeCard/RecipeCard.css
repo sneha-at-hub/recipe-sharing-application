@@ -10,6 +10,7 @@
     align-items: center;
     justify-content: center;
     position: relative; /* To position arrows correctly */
+
  
 }
 
@@ -42,6 +43,7 @@ h1:hover{
     gap: 70px;
     padding: 5px 0; /* Adds some spacing around the items */
     scroll-behavior: smooth; /* Smooth scrolling */
+    
 }
 
 .food-display-list::-webkit-scrollbar {

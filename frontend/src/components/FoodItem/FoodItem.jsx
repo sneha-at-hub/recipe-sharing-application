@@ -5,10 +5,25 @@ import { IoMdTime } from "react-icons/io";
 import { CiEdit } from "react-icons/ci";
 import { FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa"; // Import star icons
 
+import PropTypes from 'prop-types';
+
+
+
+
 const FoodItem = ({ id, name, ratings, description, image, time, user }) => {
   // State to manage whether the heart is filled or not
   const [isHeartFilled, setIsHeartFilled] = useState(false);
   const [jwtUserId, setJwtUserId] = useState(null);
+  // Inside your FoodItem component
+FoodItem.propTypes = {
+  id: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+  ratings: PropTypes.number.isRequired,
+  description: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
+  time: PropTypes.string.isRequired,
+  user: PropTypes.number.isRequired,
+};
 
   // Toggle the heart icon state
   const handleHeartClick = () => {
