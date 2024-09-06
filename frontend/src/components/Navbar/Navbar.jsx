@@ -6,6 +6,7 @@ import { SearchContext } from "../../context/SearchContext";
 import axios from "axios";
 import { HiOutlineUserCircle } from "react-icons/hi2";
 import { useNavigate, useLocation } from "react-router-dom"; // Import useLocation
+import ProfileDropdown from "../Profile/ProfileDropdown/ProfileDropdown";
 
 
 const Navbar = () => {
@@ -17,6 +18,11 @@ const Navbar = () => {
   const [userName, setUserName] = useState(null);
   const navigate = useNavigate();
   const location = useLocation();
+  const [isDropdownOpenprofile, setIsDropdownOpenprofile] = useState(false);
+
+  const toggleDropdownprofile = () => {
+    setIsDropdownOpenprofile(!isDropdownOpenprofile);
+  };
 
   const { setSearchQuery } = useContext(SearchContext);
 
@@ -183,9 +189,10 @@ const Navbar = () => {
               className="buttons"
               style={{ display: "flex", alignItems: "center" }}
             >
+              
               {userName && location.pathname !== "/login" ? (
                 <>
-                  <HiOutlineUserCircle className="icon-profile" />
+                  <HiOutlineUserCircle className="icon-profile" onClick={toggleDropdownprofile} />
                   <p
                     style={{
                       marginRight: "20px",
@@ -195,6 +202,7 @@ const Navbar = () => {
                   >
                     <span>Welcome</span> {userName}!
                   </p>
+                  {isDropdownOpenprofile && <ProfileDropdown />} 
                 </>
               ) : (
                 <>

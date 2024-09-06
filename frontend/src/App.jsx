@@ -13,6 +13,7 @@ import Signup from "./pages/Signup/Signup";
 import { SearchContext } from "./context/SearchContext";
 import RecipeBox from "./components/RecipeBox/RecipeBox";
 import Edit from "./components/Forms/Edit/Edit";
+import ProfileDropdown from "./components/Profile/ProfileDropdown/ProfileDropdown";
 
 
 const App = () => {
@@ -38,6 +39,8 @@ const App = () => {
             <Route path="/detail" element={<Detail />} />
             <Route path="/recipeadd" element={<Addrecipeshere />} />
             <Route path="/grocery-list" element={<Grocery />} />
+
+            <Route path="/ProfileDropdown" element={<ProfileDropdown />} />
 
             <Route path="/recipebox" element={<RecipeBox />} />
             <Route path="/edit-recipe/:recipeId" element={<Edit />} /> {/* Route for editing the recipe */}
