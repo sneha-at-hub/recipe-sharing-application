@@ -1,0 +1,36 @@
+.error-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border: 1px solid red;
+    padding: 20px;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .error-popup-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .error-popup-message {
+    color: red;
+    margin-bottom: 20px;
+  }
+  
+  .error-popup-close {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .error-popup-close:hover {
+    background-color: darkred;
+  }
+  
