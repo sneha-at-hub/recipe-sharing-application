@@ -1,30 +1,36 @@
 /* ProfileDropdown.css */
 .dropdown-wrapper {
     position: relative;
+    
   }
   
   .dropdown-menu {
     list-style-type: none;
     padding: 0;
     margin: 0;
-    background: #e5e5e5;
+ 
+    background-color: white;
+    border: 1px solid #ccc; /* Add a border to match the select */
     border-radius: 4px;
     position: absolute;
     top: 30px;
     right: 0;
     width: 200px;
+    overflow-y: auto;
     z-index: 1000;
-  
+    box-shadow: rgba(50, 50, 93, 0.1) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.1) 0px 1px 3px -1px;
   }
   
   .dropdown-item {
     padding: 10px 20px;
-    color:black;
+    color: #515050;
     text-decoration: none;
     cursor: pointer;
+    transition: background-color 0.2s ease-in-out; 
   }
   
   .dropdown-item:hover {
-    background-color: #555;
+    background-color: #f0f0f0;
   }
   
