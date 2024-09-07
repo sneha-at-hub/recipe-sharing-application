@@ -89,16 +89,33 @@ const Navbar = () => {
 
   const handleClick = (item) => {
     setActiveItem(item);
+  
+    // Check if the user is logged in (based on localStorage)
+    const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+  
     if (item === "Add Recipe") {
-      navigate("/recipeadd"); // Navigate to /recipeadd
+      if (isLoggedIn) {
+        // If user is logged in, navigate to the add recipe page
+        navigate("/recipeadd");
+      } else {
+        // If user is not logged in, navigate to the login page
+        navigate("/login");
+      }
     } else if (item === "Home") {
       navigate("/");
-    } else if (item =="Grocery List"){
-      navigate("/grocery-list")
-    } else if (item == "Recipe Box"){
-      navigate("/recipebox")
+    } else if (item === "Grocery List") {
+      navigate("/grocery-list");
+    } else if (item === "Recipe Box") {
+      if (isLoggedIn) {
+        // If user is logged in, navigate to the add recipe page
+        navigate("/recipebox");
+      } else {
+        // If user is not logged in, navigate to the login page
+        navigate("/login");
+      }
     }
   };
+  
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
