@@ -8,7 +8,6 @@ import { HiOutlineUserCircle } from "react-icons/hi2";
 import { useNavigate, useLocation } from "react-router-dom"; // Import useLocation
 import ProfileDropdown from "../Profile/ProfileDropdown/ProfileDropdown";
 
-
 const Navbar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isDropdownOpen2, setIsDropdownOpen2] = useState(false);
@@ -33,16 +32,11 @@ const Navbar = () => {
   useEffect(() => {
     if (location.pathname === "/recipeadd") {
       setActiveItem("Add Recipe");
-    }
-    else if(location.pathname == "/grocery-list"){
+    } else if (location.pathname == "/grocery-list") {
       setActiveItem("Grocery List");
-
-    }
-    else if(location.pathname == "/recipebox"){
+    } else if (location.pathname == "/recipebox") {
       setActiveItem("Recipe Box");
-
-    }
-    else {
+    } else {
       setActiveItem(null);
     }
   }, [location.pathname]);
@@ -89,10 +83,10 @@ const Navbar = () => {
 
   const handleClick = (item) => {
     setActiveItem(item);
-  
+
     // Check if the user is logged in (based on localStorage)
-    const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
-  
+    const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+
     if (item === "Add Recipe") {
       if (isLoggedIn) {
         // If user is logged in, navigate to the add recipe page
@@ -115,7 +109,6 @@ const Navbar = () => {
       }
     }
   };
-  
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -196,7 +189,11 @@ const Navbar = () => {
                 </ul>
               </div>
 
-              <input type="text" placeholder="Search Recipes" onChange={handleSearch} />
+              <input
+                type="text"
+                placeholder="Search Recipes"
+                onChange={handleSearch}
+              />
               <div className="icon">
                 <img src={assets.search} alt="" className="searchpng" />
               </div>
@@ -206,10 +203,12 @@ const Navbar = () => {
               className="buttons"
               style={{ display: "flex", alignItems: "center" }}
             >
-              
               {userName && location.pathname !== "/login" ? (
                 <>
-                  <HiOutlineUserCircle className="icon-profile" onClick={toggleDropdownprofile} />
+                  <HiOutlineUserCircle
+                    className="icon-profile"
+                    onClick={toggleDropdownprofile}
+                  />
                   <p
                     style={{
                       marginRight: "20px",
@@ -219,7 +218,7 @@ const Navbar = () => {
                   >
                     <span>Welcome</span> {userName}!
                   </p>
-                  {isDropdownOpenprofile && <ProfileDropdown />} 
+                  {isDropdownOpenprofile && <ProfileDropdown />}
                 </>
               ) : (
                 <>
@@ -239,8 +238,9 @@ const Navbar = () => {
                   >
                     |
                   </span>
-                  <button className="signin-btn"
-                  onClick={handlesignupClick}>Signup</button>
+                  <button className="signin-btn" onClick={handlesignupClick}>
+                    Signup
+                  </button>
                 </>
               )}
             </div>
