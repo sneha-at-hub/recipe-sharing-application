@@ -10,6 +10,7 @@ router.register('profiles',views.ProfileViewSet, basename='profile')
 router.register('comments', views.CommentViewSet, basename='comment')
 router.register('categories', views.CategoryViewSet, basename='category')
 router.register(r'recipes', views.RecipeViewSet, basename='recipe')
+router.register(r'groceries', views.GroceryItemViewSet)
 
 
 urlpatterns = [

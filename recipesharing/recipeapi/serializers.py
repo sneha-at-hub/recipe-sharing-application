@@ -92,3 +92,8 @@ class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = Profile
         fields = '__all__'
+        
+class GroceryItemSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = GroceryItem
+        fields = ['id', 'text', 'completed', 'created_at']

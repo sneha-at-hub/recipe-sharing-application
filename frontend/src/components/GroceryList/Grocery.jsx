@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import "./Grocery.css";
 import { FaShoppingBasket } from "react-icons/fa";
 
@@ -8,40 +9,70 @@ function Grocery() {
   const [filter, setFilter] = useState("all");
   const [editIndex, setEditIndex] = useState(null);
   const [editText, setEditText] = useState("");
-  const [menuIndex, setMenuIndex] = useState(null); // Track which menu is open
+  const [menuIndex, setMenuIndex] = useState(null);
+
+  // Fetch groceries from the backend
+  useEffect(() => {
+    axios.get("http://localhost:8000/api/groceries/")
+      .then((response) => setgrocerytodos(response.data))
+      .catch((error) => console.error(error));
+  }, []);
 
   const addgrocerytodo = () => {
     if (input.trim()) {
-      setgrocerytodos([...grocerytodos, { text: input, completed: false }]);
-      setInput("");
+      axios.post("http://localhost:8000/api/groceries/", { text: input, completed: false })
+        .then((response) => {
+          setgrocerytodos([...grocerytodos, response.data]);
+          setInput("");
+        })
+        .catch((error) => console.error(error));
     }
   };
 
   const togglegrocerytodo = (index) => {
-    const newgrocerytodos = [...grocerytodos];
-    newgrocerytodos[index].completed = !newgrocerytodos[index].completed;
-    setgrocerytodos(newgrocerytodos);
+    const grocerytodo = grocerytodos[index];
+    axios.patch(`http://localhost:8000/api/groceries/${grocerytodo.id}/`, {
+      completed: !grocerytodo.completed,
+    })
+      .then((response) => {
+        const newgrocerytodos = [...grocerytodos];
+        newgrocerytodos[index] = response.data;
+        setgrocerytodos(newgrocerytodos);
+      })
+      .catch((error) => console.error(error));
   };
 
   const deletegrocerytodo = (index) => {
-    const newgrocerytodos = [...grocerytodos];
-    newgrocerytodos.splice(index, 1);
-    setgrocerytodos(newgrocerytodos);
-    setMenuIndex(null); // Close menu after deleting
+    const grocerytodo = grocerytodos[index];
+    axios.delete(`http://localhost:8000/api/groceries/${grocerytodo.id}/`)
+      .then(() => {
+        const newgrocerytodos = [...grocerytodos];
+        newgrocerytodos.splice(index, 1);
+        setgrocerytodos(newgrocerytodos);
+        setMenuIndex(null);
+      })
+      .catch((error) => console.error(error));
   };
 
   const startEditgrocerytodo = (index) => {
     setEditIndex(index);
     setEditText(grocerytodos[index].text);
-    setMenuIndex(null); // Close menu after starting edit
+    setMenuIndex(null);
   };
 
   const saveEditgrocerytodo = (index) => {
-    const newgrocerytodos = [...grocerytodos];
-    newgrocerytodos[index].text = editText;
-    setgrocerytodos(newgrocerytodos);
-    setEditIndex(null);
-    setEditText("");
+    const grocerytodo = grocerytodos[index];
+    axios.patch(`http://localhost:8000/api/groceries/${grocerytodo.id}/`, {
+      text: editText,
+    })
+      .then((response) => {
+        const newgrocerytodos = [...grocerytodos];
+        newgrocerytodos[index] = response.data;
+        setgrocerytodos(newgrocerytodos);
+        setEditIndex(null);
+        setEditText("");
+      })
+      .catch((error) => console.error(error));
   };
 
   const filteredgrocerytodos = grocerytodos.filter((grocerytodo) =>

@@ -10,7 +10,7 @@ from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework_simplejwt.tokens import AccessToken
 from rest_framework.views import APIView
 
-from .models import User, Recipe, Rating, Comment, ShoppingList, Category, Profile
+from .models import User, Recipe, Rating, Comment, ShoppingList, Category, Profile, GroceryItem
 from .serializers import (
     UserSerializer,
     MyTokenPairSerializer,
@@ -20,7 +20,8 @@ from .serializers import (
     CommentSerializer,
     ShoppingListSerializer,
     CategorySerializer,
-    ProfileSerializer
+    ProfileSerializer,
+    GroceryItemSerializer,
 )
 
 # JWT Token View
@@ -142,3 +143,7 @@ class RecipeViewSet(viewsets.ModelViewSet):
     filter_backends = [DjangoFilterBackend, filters.SearchFilter]
     filterset_fields = ['category']
     search_fields = ['title', 'description', 'ingredient']
+
+class GroceryItemViewSet(viewsets.ModelViewSet):
+    queryset = GroceryItem.objects.all().order_by('created_at')
+    serializer_class = GroceryItemSerializer
